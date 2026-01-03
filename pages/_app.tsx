@@ -1,9 +1,8 @@
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import 'styles/index.css'
 
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 import { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
+import { IBM_Plex_Mono, Open_Sans, Playfair_Display } from 'next/font/google'
 import { lazy, useSyncExternalStore } from 'react'
 
 export interface SharedPageProps {
@@ -19,17 +18,16 @@ const mono = IBM_Plex_Mono({
   weight: ['500', '700'],
 })
 
-const sans = Inter({
+const sans = Open_Sans({
   variable: '--font-sans',
   subsets: ['latin'],
-  weight: ['500', '700', '800'],
+  weight: ['400', '500', '600', '700'],
 })
 
-const serif = PT_Serif({
+const serif = Playfair_Display({
   variable: '--font-serif',
-  style: ['normal', 'italic'],
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 const subscribe = () => () => {}
@@ -55,6 +53,33 @@ export default function App({
             --font-mono: ${mono.style.fontFamily};
             --font-sans: ${sans.style.fontFamily};
             --font-serif: ${serif.style.fontFamily};
+            --color-primary: #b8860b;
+            --color-primary-dark: #8b6914;
+            --color-primary-light: #d4a574;
+            --color-secondary: #3d2914;
+            --color-background: #ffffff;
+            --color-background-warm: #faf5eb;
+            --color-text: #1a1a1a;
+            --color-text-muted: #6b7280;
+          }
+
+          html {
+            scroll-behavior: smooth;
+          }
+
+          body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+          }
+
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: var(--font-serif);
           }
         `}
       </style>
