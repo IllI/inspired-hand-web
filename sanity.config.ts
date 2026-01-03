@@ -10,17 +10,26 @@ import { defineConfig } from 'sanity'
 import { presentationTool } from 'sanity/presentation'
 import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+
+// Document schemas
 import page from 'schemas/documents/page'
-import project from 'schemas/documents/project'
-import duration from 'schemas/objects/duration'
-import milestone from 'schemas/objects/milestone'
-import timeline from 'schemas/objects/timeline'
-import youtube from 'schemas/objects/youtube'
-import home from 'schemas/singletons/home'
+
+// Object schemas (modules)
+import hero from 'schemas/objects/hero'
+import richTextSection from 'schemas/objects/richTextSection'
+import slideshow from 'schemas/objects/slideshow'
+import twoColumnSection from 'schemas/objects/twoColumnSection'
+import formSection from 'schemas/objects/formSection'
+import ctaSection from 'schemas/objects/ctaSection'
+import quoteSection from 'schemas/objects/quoteSection'
+
+// Singleton schemas
 import settings from 'schemas/singletons/settings'
+
 import { debugSecrets } from '@sanity/preview-url-secret/sanity-plugin-debug-secrets'
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE
+const title =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Inspired Hand Ministries'
 
 export default defineConfig({
   basePath,
@@ -28,19 +37,19 @@ export default defineConfig({
   dataset: dataset || '',
   title,
   schema: {
-    // If you want more content types, you can add them to this array
     types: [
       // Singletons
-      home,
       settings,
       // Documents
-      duration,
       page,
-      project,
-      // Objects
-      milestone,
-      timeline,
-      youtube,
+      // Objects (modules for page builder)
+      hero,
+      richTextSection,
+      slideshow,
+      twoColumnSection,
+      formSection,
+      ctaSection,
+      quoteSection,
     ],
   },
   plugins: [
@@ -53,10 +62,10 @@ export default defineConfig({
       },
     }),
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([settings]),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([settings.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio
