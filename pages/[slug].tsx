@@ -67,40 +67,8 @@ export default function PageRoute({ page, settings }: PageProps) {
     moduleTypes: page.modules?.map((m) => m._type) || [],
   })
 
-  // Debug: Render debug info FIRST before anything can error
-  const debugInfo = (
-    <div className="bg-yellow-100 border-4 border-yellow-500 p-6 m-4 text-black">
-      <h2 className="text-2xl font-bold mb-4">🔍 DEBUG INFO</h2>
-      <p>
-        <strong>Page ID:</strong> {page._id || 'undefined'}
-      </p>
-      <p>
-        <strong>Page Title:</strong> {page.title || 'undefined'}
-      </p>
-      <p>
-        <strong>Page Slug:</strong> {page.slug || 'undefined'}
-      </p>
-      <p>
-        <strong>Module Count:</strong> {page.modules?.length || 0}
-      </p>
-      <p>
-        <strong>Module Types:</strong>
-      </p>
-      <ul className="list-disc ml-6">
-        {page.modules?.map((m, i) => (
-          <li key={i}>
-            {i}: {m._type || 'UNDEFINED TYPE'} - {m.heading || '(no heading)'}
-          </li>
-        )) || <li>No modules</li>}
-      </ul>
-      <p className="mt-4">
-        <strong>Raw modules data:</strong>
-      </p>
-      <pre className="bg-gray-800 text-green-400 p-4 text-xs overflow-auto max-h-64 mt-2">
-        {JSON.stringify(page.modules, null, 2)}
-      </pre>
-    </div>
-  )
+  // Debug info simplified to avoid TypeScript errors
+  const moduleTypes = page.modules?.map((m) => m._type).join(', ') || 'none'
 
   return (
     <>
@@ -113,10 +81,12 @@ export default function PageRoute({ page, settings }: PageProps) {
         )}
       </Head>
 
-      {/* Show debug BEFORE Layout to ensure it renders even if Layout errors */}
-      {debugInfo}
-
       <Layout settings={settings}>
+        {/* Debug banner */}
+        <div className="bg-yellow-100 border-b-4 border-yellow-500 p-4 text-black text-sm">
+          <strong>Debug:</strong> Page: {page._id} | Modules:{' '}
+          {page.modules?.length || 0} | Types: {moduleTypes}
+        </div>
         <ModuleRenderer modules={page.modules} />
       </Layout>
     </>
