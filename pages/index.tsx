@@ -1,39 +1,42 @@
-import { HomePage } from 'components/pages/home/HomePage'
-import HomePagePreview from 'components/pages/home/HomePagePreview'
+import { ModuleRenderer } from 'components/modules'
+import { Layout } from 'components/shared/Layout'
 import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import { homePageQuery, settingsQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
-import { HomePagePayload, SettingsPayload } from 'types'
+import Head from 'next/head'
+import type { HomePagePayload, SettingsPayload } from 'types'
 
 import type { SharedPageProps } from './_app'
 
 interface PageProps extends SharedPageProps {
-  page: HomePagePayload
-  settings: SettingsPayload
+  page: HomePagePayload | null
+  settings: SettingsPayload | null
 }
 
-interface Query {
-  [key: string]: string
+export default function IndexPage({ page, settings }: PageProps) {
+  const title = page?.title || settings?.siteTitle || 'Inspired Hand Ministries'
+  const description = page?.seoDescription || settings?.tagline || ''
+
+  return (
+    <>
+      <Head>
+        <title>{title}</title>
+        {description && <meta name="description" content={description} />}
+        <meta property="og:title" content={title} />
+        {description && (
+          <meta property="og:description" content={description} />
+        )}
+      </Head>
+
+      <Layout settings={settings}>
+        <ModuleRenderer modules={page?.modules} />
+      </Layout>
+    </>
+  )
 }
 
-export default function IndexPage(props: PageProps) {
-  const { page, settings, draftMode } = props
-
-  if (draftMode) {
-    return <HomePagePreview page={page} settings={settings} />
-  }
-
-  return <HomePage page={page} settings={settings} />
-}
-
-const fallbackPage: HomePagePayload = {
-  title: '',
-  overview: [],
-  showcaseProjects: [],
-}
-
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
+export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
@@ -44,10 +47,11 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
 
   return {
     props: {
-      page: page ?? fallbackPage,
-      settings: settings ?? {},
+      page: page ?? null,
+      settings: settings ?? null,
       draftMode,
       token: draftMode ? readToken : null,
     },
+    revalidate: 10,
   }
 }

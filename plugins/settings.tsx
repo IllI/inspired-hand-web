@@ -1,59 +1,27 @@
-/**
- * This plugin contains all the logic for setting up the singletons
- */
-
 import { type DocumentDefinition } from 'sanity'
 import { type StructureResolver } from 'sanity/structure'
 
-export const singletonPlugin = (types: string[]) => {
-  return {
-    name: 'singletonPlugin',
-    document: {
-      // Hide 'Singletons (such as Home)' from new document options
-      // https://user-images.githubusercontent.com/81981/195728798-e0c6cf7e-d442-4e58-af3a-8cd99d7fcc28.png
-      newDocumentOptions: (prev, { creationContext }) => {
-        if (creationContext.type === 'global') {
-          return prev.filter(
-            (templateItem) => !types.includes(templateItem.templateId),
-          )
-        }
-
-        return prev
-      },
-      // Removes the "duplicate" action on the Singletons (such as Home)
-      actions: (prev, { schemaType }) => {
-        if (types.includes(schemaType)) {
-          return prev.filter(({ action }) => action !== 'duplicate')
-        }
-
-        return prev
-      },
-    },
-  }
-}
-
-// The StructureResolver is how we're changing the DeskTool structure to linking to document (named Singleton)
-// like how "Home" is handled.
+// The StructureResolver is how we're changing the structure of the default document list
+// https://www.sanity.io/docs/structure-builder-reference
 export const pageStructure = (
   typeDefArray: DocumentDefinition[],
 ): StructureResolver => {
   return (S) => {
     // Goes through all of the singletons that were provided and translates them into something the
-    // Desktool can understand
+    // Structure tool can understand
     const singletonItems = typeDefArray.map((typeDef) => {
       return S.listItem()
-        .title(typeDef.title)
+        .title(typeDef.title || typeDef.name)
         .icon(typeDef.icon)
         .child(
           S.editor()
             .id(typeDef.name)
             .schemaType(typeDef.name)
-            .documentId(typeDef.name)
-            .views([S.view.form()]),
+            .documentId(typeDef.name),
         )
     })
 
-    // The default root list items (except custom ones)
+    // The default root list items (except singletons)
     const defaultListItems = S.documentTypeListItems().filter(
       (listItem) =>
         !typeDefArray.find((singleton) => singleton.name === listItem.getId()),
@@ -62,5 +30,37 @@ export const pageStructure = (
     return S.list()
       .title('Content')
       .items([...singletonItems, S.divider(), ...defaultListItems])
+  }
+}
+
+export const singletonPlugin = (types: string[]) => {
+  return {
+    name: 'singletonPlugin',
+    document: {
+      // Hide singleton types from the global "Create new document" menu options
+      newDocumentOptions: (
+        prev: any[],
+        { creationContext }: { creationContext: { type: string } },
+      ) => {
+        if (creationContext.type === 'global') {
+          return prev.filter(
+            (templateItem: any) => !types.includes(templateItem.templateId),
+          )
+        }
+        return prev
+      },
+      // Prevent singletons from being duplicated
+      actions: (prev: any[], { schemaType }: { schemaType: string }) => {
+        if (types.includes(schemaType)) {
+          return prev.filter(
+            (prevAction: any) =>
+              prevAction.action !== 'duplicate' &&
+              prevAction.action !== 'delete' &&
+              prevAction.action !== 'unpublish',
+          )
+        }
+        return prev
+      },
+    },
   }
 }
