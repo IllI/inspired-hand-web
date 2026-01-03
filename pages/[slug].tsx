@@ -10,6 +10,9 @@ import type { PagePayload, SettingsPayload } from 'types'
 
 import type { SharedPageProps } from './_app'
 
+// Debug: Log when module loads
+console.log('[slug].tsx loaded')
+
 interface PageProps extends SharedPageProps {
   page: PagePayload | null
   settings: SettingsPayload | null
@@ -55,6 +58,15 @@ export default function PageRoute({ page, settings }: PageProps) {
     : settings?.siteTitle || 'Inspired Hand Ministries'
   const description = page.seoDescription || settings?.tagline || ''
 
+  // Debug logging
+  console.log('[slug] Page data:', {
+    id: page._id,
+    title: page.title,
+    slug: page.slug,
+    moduleCount: page.modules?.length || 0,
+    moduleTypes: page.modules?.map((m) => m._type) || [],
+  })
+
   return (
     <>
       <Head>
@@ -67,6 +79,18 @@ export default function PageRoute({ page, settings }: PageProps) {
       </Head>
 
       <Layout settings={settings}>
+        {/* Debug: Show module count */}
+        {process.env.NODE_ENV === 'development' || true ? (
+          <div className="bg-yellow-100 p-4 text-sm">
+            <p>
+              <strong>Debug:</strong> Page ID: {page._id}
+            </p>
+            <p>Modules: {page.modules?.length || 0}</p>
+            <p>
+              Types: {page.modules?.map((m) => m._type).join(', ') || 'none'}
+            </p>
+          </div>
+        ) : null}
         <ModuleRenderer modules={page.modules} />
       </Layout>
     </>
@@ -77,12 +101,20 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false, params = {} } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
+  console.log('[slug] getStaticProps called for slug:', params.slug)
+
   const [settings, page] = await Promise.all([
     client.fetch<SettingsPayload | null>(settingsQuery),
     client.fetch<PagePayload | null>(pagesBySlugQuery, {
       slug: params.slug,
     }),
   ])
+
+  console.log('[slug] Fetched page:', {
+    found: !!page,
+    id: page?._id,
+    moduleCount: page?.modules?.length || 0,
+  })
 
   // Don't return 404 for home slug - that's handled by index.tsx
   if (!page && params.slug === 'home') {
