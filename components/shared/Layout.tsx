@@ -22,19 +22,16 @@ export function Layout({ children, settings }: LayoutProps) {
     <div className="flex min-h-screen flex-col bg-white text-gray-900 font-sans">
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative">
 
-          {/* Left: Navigation (Desktop) */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigation.map((item) => (
-              <Link
-                key={item._key}
-                href={item.link || '/'}
-                className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary"
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Left: Navigation (Mission, Success Stories) */}
+          <nav className="hidden lg:flex items-center gap-8 w-1/3 justify-start">
+            <Link href="/mission" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+              Mission
+            </Link>
+            <Link href="/success-stories" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+              Success Stories
+            </Link>
           </nav>
 
           {/* Center: Logo */}
@@ -51,22 +48,27 @@ export function Layout({ children, settings }: LayoutProps) {
             </span>
           </Link>
 
-          {/* Right: Donate Button & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* Right: Navigation (Resources) & Donate */}
+          <div className="hidden lg:flex items-center gap-8 w-1/3 justify-end">
+            <Link href="/resources" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+              Resources
+            </Link>
             <Link
               href="/support-us"
-              className="hidden sm:inline-flex items-center gap-2 rounded-sm bg-ih-accent px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-red-700 shadow-sm"
+              className="inline-flex items-center gap-2 rounded-sm bg-ih-accent px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-red-700 shadow-sm"
             >
               <span>Donate</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </Link>
+          </div>
 
-            {/* Mobile menu button */}
+          {/* Mobile Menu Toggle (Visible on small screens) */}
+          <div className="lg:hidden ml-auto">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-ih-primary lg:hidden"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-ih-primary"
               aria-label="Open menu"
             >
               <svg
@@ -84,6 +86,7 @@ export function Layout({ children, settings }: LayoutProps) {
               </svg>
             </button>
           </div>
+
         </div>
       </header>
 
