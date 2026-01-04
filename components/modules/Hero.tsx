@@ -1,4 +1,5 @@
 import { urlForImage } from 'lib/sanity.image'
+import Image from 'next/image'
 import Link from 'next/link'
 import type { HeroModule } from 'types'
 
@@ -21,10 +22,13 @@ export function Hero({ module }: HeroProps) {
           {/* Image Column */}
           <div className="relative order-1 lg:order-1 h-[400px] w-full lg:h-[600px]">
             {backgroundUrl ? (
-              <img
+              <Image
                 src={backgroundUrl}
                 alt={heading || "Hero Image"}
-                className="h-full w-full object-cover object-center rounded-sm shadow-sm"
+                fill
+                priority
+                className="object-cover object-center rounded-sm shadow-sm"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             ) : (
               <div className="h-full w-full bg-gray-100 flex items-center justify-center text-gray-400">
