@@ -10,54 +10,56 @@ export function Hero({ module }: HeroProps) {
   const { heading, subheading, backgroundImage, cta } = module
 
   const backgroundUrl = backgroundImage?.asset
-    ? urlForImage(backgroundImage)?.width(1920).height(1080).url()
+    ? urlForImage(backgroundImage)?.width(1000).url()
     : null
 
   return (
-    <section
-      className="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-brown-800"
-      style={
-        backgroundUrl
-          ? {
-              backgroundImage: `linear-gradient(rgba(26, 16, 8, 0.6), rgba(26, 16, 8, 0.6)), url(${backgroundUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }
-          : undefined
-      }
-    >
-      <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center text-white">
-        {heading && (
-          <h1 className="mb-6 font-heading text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            {heading}
-          </h1>
-        )}
+    <section className="bg-white overflow-hidden">
+      <div className="container mx-auto px-4 py-12 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
 
-        {subheading && (
-          <p className="mb-8 font-body text-lg text-cream-200 sm:text-xl md:text-2xl">
-            {subheading}
-          </p>
-        )}
+          {/* Image Column */}
+          <div className="relative order-1 lg:order-1 h-[400px] w-full lg:h-[600px]">
+            {backgroundUrl ? (
+              <img
+                src={backgroundUrl}
+                alt={heading || "Hero Image"}
+                className="h-full w-full object-cover object-center rounded-sm shadow-sm"
+              />
+            ) : (
+              <div className="h-full w-full bg-gray-100 flex items-center justify-center text-gray-400">
+                No Image Available
+              </div>
+            )}
+          </div>
 
-        {cta?.label && cta?.link && (
-          <Link
-            href={cta.link}
-            className="inline-block rounded-lg bg-gold-600 px-8 py-4 font-body text-lg font-semibold text-white shadow-lg transition-all hover:bg-gold-700 hover:shadow-xl"
-          >
-            {cta.label}
-          </Link>
-        )}
-      </div>
+          {/* Content Column */}
+          <div className="order-2 lg:order-2 flex flex-col justify-center text-center lg:text-left">
+            <div className="mx-auto lg:mx-0 max-w-xl">
+              {heading && (
+                <h1 className="mb-6 font-heading text-4xl font-bold leading-tight text-ih-text-dark sm:text-5xl md:text-6xl lg:text-7xl">
+                  {heading}
+                </h1>
+              )}
 
-      {/* Decorative bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          className="h-16 w-full fill-white md:h-24"
-          viewBox="0 0 1440 100"
-          preserveAspectRatio="none"
-        >
-          <path d="M0,50 C150,100 350,0 600,50 C850,100 1050,0 1200,50 C1350,100 1440,50 1440,50 L1440,100 L0,100 Z" />
-        </svg>
+              {subheading && (
+                <p className="mb-8 font-body text-lg text-ih-text-dark opacity-80 sm:text-xl leading-relaxed">
+                  {subheading}
+                </p>
+              )}
+
+              {cta?.label && cta?.link && (
+                <Link
+                  href={cta.link}
+                  className="inline-block rounded-none bg-ih-primary px-10 py-4 font-sans text-sm font-bold uppercase tracking-widest text-ih-text-dark shadow-sm transition-all hover:bg-ih-primary-dark hover:shadow-md"
+                >
+                  {cta.label}
+                </Link>
+              )}
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   )

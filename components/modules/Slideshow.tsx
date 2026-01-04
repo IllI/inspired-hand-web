@@ -58,9 +58,8 @@ export function Slideshow({ module }: SlideshowProps) {
           return (
             <div
               key={slide._key || index}
-              className={`absolute inset-0 transition-opacity duration-700 ${
-                index === currentIndex ? 'opacity-100' : 'opacity-0'
-              }`}
+              className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? 'opacity-100' : 'opacity-0'
+                }`}
             >
               {imageUrl && (
                 <Image
@@ -92,7 +91,7 @@ export function Slideshow({ module }: SlideshowProps) {
                     {slide.ctaLabel && slide.ctaLink && (
                       <Link
                         href={slide.ctaLink}
-                        className="inline-block rounded-lg bg-amber-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-amber-700 sm:px-8 sm:py-3 sm:text-base"
+                        className="inline-block rounded-none bg-ih-primary px-6 py-2 text-sm font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:bg-ih-primary-light sm:px-8 sm:py-3 sm:text-base border border-ih-text-dark"
                       >
                         {slide.ctaLabel}
                       </Link>
@@ -157,11 +156,10 @@ export function Slideshow({ module }: SlideshowProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 w-2 rounded-full transition-all sm:h-3 sm:w-3 ${
-                index === currentIndex
+              className={`h-2 w-2 rounded-full transition-all sm:h-3 sm:w-3 ${index === currentIndex
                   ? 'w-6 bg-white sm:w-8'
                   : 'bg-white/50 hover:bg-white/75'
-              }`}
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

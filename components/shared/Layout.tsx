@@ -19,60 +19,71 @@ export function Layout({ children, settings }: LayoutProps) {
     : null
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-gray-900">
+    <div className="flex min-h-screen flex-col bg-white text-gray-900 font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo / Site Title */}
-          <Link href="/" className="flex items-center gap-3">
-            {logoUrl ? (
-              <Image
-                src={logoUrl}
-                alt={logo?.alt || siteTitle}
-                width={120}
-                height={48}
-                className="h-10 w-auto"
-              />
-            ) : (
-              <span className="text-xl font-bold text-amber-700">
-                {siteTitle}
-              </span>
-            )}
-          </Link>
+      <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-          {/* Navigation */}
-          <nav className="hidden md:flex md:items-center md:gap-6">
+          {/* Left: Navigation (Desktop) */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navigation.map((item) => (
               <Link
                 key={item._key}
                 href={item.link || '/'}
-                className="text-sm font-medium text-gray-700 transition-colors hover:text-amber-700"
+                className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-amber-700 md:hidden"
-            aria-label="Open menu"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+          {/* Center: Logo */}
+          <Link href="/" className="flex items-center justify-center gap-3 absolute left-1/2 transform -translate-x-1/2">
+            <span className="font-heading text-2xl font-bold text-ih-text-dark tracking-tight">
+              Inspired
+            </span>
+            {/* Paw Icon */}
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-ih-text-dark">
+              <path d="M12,2C12,2 11,3 11,4C11,5 12,6 12,6C12,6 13,5 13,4C13,3 12,2 12,2M8,3C8,3 6,4 6,6C6,8 8,9 8,9C8,9 9,8 9,6C9,4 8,3 8,3M16,3C16,3 15,4 15,6C15,8 17,9 17,9C17,9 19,8 19,6C19,4 16,3 16,3M5.5,8C5.5,8 3,9 3,11C3,13 5.5,14 5.5,14C5.5,14 6.5,13 6.5,11C6.5,9 5.5,8 5.5,8M18.5,8C18.5,8 17.5,9 17.5,11C17.5,13 20,14 20,14C20,14 21,13 21,11C21,9 18.5,8 18.5,8M12,8C9.5,8 7,10 7,12.5C7,15 9.5,17 12,17C14.5,17 17,15 17,12.5C17,10 14.5,8 12,8M12,18C9,18 6,19.5 5,22H19C18,19.5 15,18 12,18Z" />
             </svg>
-          </button>
+            <span className="font-heading text-2xl font-bold text-ih-text-dark tracking-tight">
+              Hand
+            </span>
+          </Link>
+
+          {/* Right: Donate Button & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/support-us"
+              className="hidden sm:inline-flex items-center gap-2 rounded-sm bg-ih-accent px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-red-700 shadow-sm"
+            >
+              <span>Donate</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </Link>
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-ih-primary lg:hidden"
+              aria-label="Open menu"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -80,80 +91,81 @@ export function Layout({ children, settings }: LayoutProps) {
       <main className="flex-grow">{children}</main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-gray-900 text-white">
-        {/* Quote section */}
-        {footer?.quote && (
-          <div className="border-b border-gray-800 py-8 text-center">
-            <p className="mx-auto max-w-2xl px-6 text-lg italic text-gray-300">
-              {`"${footer.quote}"`}
-            </p>
-            {footer.quoteAttribution && (
-              <p className="mt-2 text-amber-500">{footer.quoteAttribution}</p>
-            )}
-          </div>
-        )}
-
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Brand column */}
-            <div>
-              <h3 className="text-lg font-bold text-white">{siteTitle}</h3>
-              {settings?.tagline && (
-                <p className="mt-2 text-sm text-gray-400">{settings.tagline}</p>
-              )}
+      <footer className="text-white">
+        {/* Newsletter Strip (Visual Match) */}
+        <div className="bg-ih-primary py-8 text-center text-ih-text-dark">
+          <div className="mx-auto max-w-4xl px-4">
+            <h3 className="text-2xl font-heading font-bold mb-2">Be Inspired</h3>
+            <p className="font-sans mb-4">Join our dedicated community and receive our weekly devotionals.</p>
+            {/* Placeholder for form input */}
+            <div className="flex justify-center gap-2 max-w-md mx-auto">
+              <input type="email" placeholder="Enter your email here*" className="px-4 py-2 w-full border border-gray-300" />
+              <button className="bg-ih-text-dark text-white px-6 py-2 uppercase font-bold text-xs tracking-widest">Subscribe</button>
             </div>
+          </div>
+        </div>
 
-            {/* Links column */}
-            {footer?.links && footer.links.length > 0 && (
-              <div>
-                <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
-                  Quick Links
-                </h4>
-                <ul className="space-y-2">
-                  {footer.links.map((link) => (
-                    <li key={link._key}>
-                      <Link
-                        href={link.link || '/'}
-                        className="text-sm text-gray-300 transition-colors hover:text-amber-500"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Social links column */}
-            {settings?.socialLinks && settings.socialLinks.length > 0 && (
-              <div>
-                <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">
-                  Follow Us
-                </h4>
-                <div className="flex gap-4">
-                  {settings.socialLinks.map((social) => (
+        {/* Main Footer Content */}
+        <div className="bg-ih-footer border-t border-ih-secondary">
+          <div className="mx-auto max-w-7xl px-6 py-16">
+            <div className="grid gap-12 md:grid-cols-3 text-center md:text-left">
+              {/* Brand column */}
+              <div className="flex flex-col items-center md:items-start">
+                <h3 className="text-xl font-heading font-bold leading-tight">INSPIRED HAND<br />MINISTRIES</h3>
+                <p className="mt-4 text-sm text-gray-200 italic font-serif">"Let Every Creature Hear His Calling!"</p>
+                <div className="mt-6 flex gap-4">
+                  {settings?.socialLinks?.map((social) => (
                     <a
                       key={social._key}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 transition-colors hover:text-amber-500"
-                      aria-label={social.platform}
+                      className="text-white hover:text-ih-primary transition-colors"
                     >
                       <SocialIcon platform={social.platform} />
                     </a>
                   ))}
                 </div>
               </div>
-            )}
-          </div>
 
-          {/* Copyright */}
-          <div className="mt-8 border-t border-gray-800 pt-8 text-center">
-            <p className="text-sm text-gray-400">
-              {footer?.copyrightText ||
-                `© ${new Date().getFullYear()} ${siteTitle}. All rights reserved.`}
-            </p>
+              {/* Contact / Links */}
+              <div className="flex flex-col items-center md:items-center">
+                <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-ih-primary">
+                  Quick Links
+                </h4>
+                <ul className="space-y-3">
+                  {navigation.map((item) => (
+                    <li key={item._key}>
+                      <Link
+                        href={item.link || '/'}
+                        className="text-sm text-gray-200 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Let's Talk */}
+              <div className="flex flex-col items-center md:items-end">
+                <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-ih-primary">
+                  Let's Talk
+                </h4>
+                <p className="text-gray-200 text-sm mb-4">Questions, stories, or thoughts?</p>
+                <Link href="/contact" className="text-white underline decoration-ih-primary hover:text-ih-primary transition-colors">
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+
+            {/* Copyright */}
+            <div className="mt-16 border-t border-white/10 pt-8 text-center">
+              <p className="text-xs text-gray-300 font-sans uppercase tracking-wider">
+                {footer?.copyrightText ||
+                  `© ${new Date().getFullYear()} Reverend H. Smith. All rights reserved.`}
+              </p>
+            </div>
           </div>
         </div>
       </footer>

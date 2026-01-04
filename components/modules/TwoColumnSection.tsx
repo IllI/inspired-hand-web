@@ -12,18 +12,18 @@ interface TwoColumnSectionProps {
 const portableTextComponents = {
   block: {
     normal: ({ children }: { children?: React.ReactNode }) => (
-      <p className="mb-4 text-gray-700 leading-relaxed">{children}</p>
+      <p className="mb-4 text-ih-text-dark opacity-80 leading-relaxed font-body">{children}</p>
     ),
     h2: ({ children }: { children?: React.ReactNode }) => (
-      <h2 className="mb-4 text-2xl font-bold text-gray-900">{children}</h2>
+      <h2 className="mb-4 text-2xl font-bold text-ih-text-dark font-heading">{children}</h2>
     ),
     h3: ({ children }: { children?: React.ReactNode }) => (
-      <h3 className="mb-3 text-xl font-semibold text-gray-900">{children}</h3>
+      <h3 className="mb-3 text-xl font-semibold text-ih-text-dark font-heading">{children}</h3>
     ),
   },
   marks: {
     strong: ({ children }: { children?: React.ReactNode }) => (
-      <strong className="font-semibold">{children}</strong>
+      <strong className="font-semibold text-ih-text-dark">{children}</strong>
     ),
     em: ({ children }: { children?: React.ReactNode }) => (
       <em className="italic">{children}</em>
@@ -41,7 +41,7 @@ const portableTextComponents = {
       return (
         <a
           href={href}
-          className="text-amber-700 underline hover:text-amber-800"
+          className="text-ih-primary underline hover:text-ih-primary-dark"
           target={isExternal ? '_blank' : undefined}
           rel={isExternal ? 'noopener noreferrer' : undefined}
         >
@@ -62,15 +62,14 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
   const isImageLeft = layout === 'image-left'
 
   return (
-    <section className="py-12 md:py-20">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="py-12 md:py-20 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
         <div
-          className={`grid items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-16 ${
-            isImageLeft ? '' : 'md:[&>*:first-child]:order-2'
-          }`}
+          className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
+            }`}
         >
           {/* Image Column */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+          <div className="relative aspect-[4/3] overflow-hidden shadow-sm">
             {imageUrl ? (
               <Image
                 src={imageUrl}
@@ -79,22 +78,22 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
                 className="object-cover"
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-gray-200">
-                <span className="text-gray-400">No image</span>
+              <div className="flex h-full w-full items-center justify-center bg-gray-100">
+                <span className="text-gray-400 font-mono text-sm">No Image</span>
               </div>
             )}
           </div>
 
           {/* Content Column */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center text-center lg:text-left">
             {heading && (
-              <h2 className="mb-6 text-3xl font-bold text-gray-900 md:text-4xl">
+              <h2 className="mb-6 text-3xl font-bold text-ih-text-dark font-heading md:text-4xl lg:text-5xl">
                 {heading}
               </h2>
             )}
 
             {content && content.length > 0 && (
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-lg max-w-none text-ih-text-dark">
                 <PortableText
                   value={content}
                   components={portableTextComponents}
@@ -106,7 +105,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
               <div className="mt-8">
                 <Link
                   href={cta.link}
-                  className="inline-block rounded-lg bg-amber-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-amber-700"
+                  className="inline-block rounded-none bg-ih-primary px-8 py-3 text-sm font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:bg-ih-primary-light shadow-sm"
                 >
                   {cta.label}
                 </Link>

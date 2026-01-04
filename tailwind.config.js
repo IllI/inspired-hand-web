@@ -20,51 +20,22 @@ module.exports = {
     },
     extend: {
       colors: {
-        // Primary brand colors (gold/amber tones)
+        // Original Wix Site Palette
+        'ih-primary': '#bada55',      // Fresh Green (Shop Now, User Highlights)
+        'ih-accent': '#d32300',       // Orange-Red (Donate Button)
+        'ih-secondary': '#335168',    // Dark Slate Blue (Our Story Box)
+        'ih-footer': '#4c7a9c',       // Steel Blue (Footer Background)
+        'ih-text-dark': '#000000',
+        'ih-text-light': '#ffffff',
+
+        // Semantic overrides
         gold: {
-          50: '#fdf9ed',
-          100: '#f9f0d3',
-          200: '#f2dea3',
-          300: '#e9c66a',
-          400: '#e2ae3e',
-          500: '#d4942a',
-          600: '#b8860b', // Primary gold - DarkGoldenrod
-          700: '#8b6914',
-          800: '#6d5315',
-          900: '#5a4517',
-          950: '#332408',
+          500: '#bada55', // Mapping "gold" calls to our primary green for instant retrofitting
+          600: '#a0bd40',
         },
-        // Secondary/accent colors (warm browns)
         brown: {
-          50: '#faf5eb',
-          100: '#f2e8d5',
-          200: '#e5cfad',
-          300: '#d4a574',
-          400: '#c58a54',
-          500: '#b67240',
-          600: '#9d5835',
-          700: '#7d432d',
-          800: '#3d2914',
-          900: '#2a1d0f',
-          950: '#1a1008',
+          900: '#335168', // Mapping "brown" backgrounds to slate blue
         },
-        // Cream/warm backgrounds
-        cream: {
-          50: '#fefdfb',
-          100: '#fdfaf5',
-          200: '#faf5eb',
-          300: '#f5edd9',
-          400: '#eddfc0',
-          500: '#e2cfa3',
-        },
-        // Inspired Hand specific colors
-        'ih-primary': '#b8860b',
-        'ih-primary-dark': '#8b6914',
-        'ih-primary-light': '#d4a574',
-        'ih-secondary': '#3d2914',
-        'ih-background': '#faf5eb',
-        'ih-text': '#1a1a1a',
-        'ih-text-muted': '#6b7280',
       },
       backgroundColor: {
         warm: '#faf5eb',
