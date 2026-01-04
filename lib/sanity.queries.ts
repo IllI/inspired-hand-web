@@ -19,7 +19,7 @@ const moduleProjection = groq`
       ...,
       _type == "image" => {
         ...,
-        asset->
+        asset
       }
     }
   },
@@ -28,7 +28,7 @@ const moduleProjection = groq`
       _key,
       image {
         ...,
-        asset->
+        asset
       },
       heading,
       caption,
@@ -44,7 +44,7 @@ const moduleProjection = groq`
     content,
     image {
       ...,
-      asset->
+      asset
     },
     cta
   },
@@ -71,7 +71,7 @@ const moduleProjection = groq`
     style,
     backgroundImage {
       ...,
-      asset->
+      asset
     }
   },
   _type == "quoteSection" => {
@@ -95,7 +95,7 @@ export const homePageQuery = groq`
     seoDescription,
     ogImage {
       ...,
-      asset->
+      asset
     },
     modules[] {
       ${moduleProjection}
@@ -137,7 +137,7 @@ export const settingsQuery = groq`
     tagline,
     logo {
       ...,
-      asset->
+      asset
     },
     navigation[] {
       _key,
