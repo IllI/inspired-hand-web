@@ -4,6 +4,7 @@ import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import { pagePaths, pagesBySlugQuery, settingsQuery } from 'lib/sanity.queries'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import { useLiveQuery } from 'next-sanity/preview'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import type { PagePayload, SettingsPayload } from 'types'
@@ -22,7 +23,12 @@ interface Query {
   [key: string]: string
 }
 
-export default function PageRoute({ page, settings }: PageProps) {
+export default function PageRoute(props: PageProps) {
+  const [page] = useLiveQuery(props.page, pagesBySlugQuery, {
+    slug: props.page?.slug,
+  })
+  const [settings] = useLiveQuery(props.settings, settingsQuery)
+
   const router = useRouter()
 
   // Show loading state for fallback pages

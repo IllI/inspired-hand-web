@@ -4,6 +4,7 @@ import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import { homePageQuery, settingsQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
+import { useLiveQuery } from 'next-sanity/preview'
 import Head from 'next/head'
 import type { HomePagePayload, SettingsPayload } from 'types'
 
@@ -14,7 +15,10 @@ interface PageProps extends SharedPageProps {
   settings: SettingsPayload | null
 }
 
-export default function IndexPage({ page, settings }: PageProps) {
+export default function IndexPage(props: PageProps) {
+  const [page] = useLiveQuery(props.page, homePageQuery)
+  const [settings] = useLiveQuery(props.settings, settingsQuery)
+
   const title = page?.title || settings?.siteTitle || 'Inspired Hand Ministries'
   const description = page?.seoDescription || settings?.tagline || ''
 
