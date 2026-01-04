@@ -9,7 +9,7 @@ const moduleProjection = groq`
     subheading,
     backgroundImage {
       ...,
-      asset->
+      asset
     },
     cta
   },
