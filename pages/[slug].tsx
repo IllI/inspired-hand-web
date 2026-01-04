@@ -21,10 +21,10 @@ interface Query {
 }
 
 export default function PageRoute(props: PageProps) {
-  const [page] = useLiveQuery(props.page, pagesBySlugQuery, {
+  const [page] = useLiveQuery(props.page || null, pagesBySlugQuery, {
     slug: props.page?.slug || '',
   })
-  const [settings] = useLiveQuery(props.settings, settingsQuery)
+  const [settings] = useLiveQuery(props.settings || null, settingsQuery)
 
   const router = useRouter()
 
