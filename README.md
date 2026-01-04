@@ -155,3 +155,4 @@ the `/intro-template` directory.
 [sales-cta]: https://www.sanity.io/contact/sales?utm_source=github.com&utm_medium=referral&utm_campaign=may-vercel-launch
 [enterprise-cta]: https://www.sanity.io/enterprise?utm_source=github.com&utm_medium=referral&utm_campaign=may-vercel-launch
 [vercel-enterprise]: https://vercel.com/docs/accounts/plans/enterprise
+ 
