@@ -25,7 +25,7 @@ interface Query {
 
 export default function PageRoute(props: PageProps) {
   const [page] = useLiveQuery(props.page, pagesBySlugQuery, {
-    slug: props.page?.slug,
+    slug: props.page?.slug || '',
   })
   const [settings] = useLiveQuery(props.settings, settingsQuery)
 
