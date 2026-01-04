@@ -18,7 +18,8 @@ export default defineType({
       name: 'attribution',
       title: 'Attribution',
       type: 'string',
-      description: 'Who said this quote (e.g., "John 3:16" or "Reverend Smith")',
+      description:
+        'Who said this quote (e.g., "John 3:16" or "Reverend Smith")',
     }),
     defineField({
       name: 'source',
@@ -66,7 +67,8 @@ export default defineType({
     },
     prepare({ title, subtitle, media }) {
       // Truncate quote for preview
-      const truncatedQuote = title?.length > 50 ? `${title.slice(0, 50)}...` : title
+      const truncatedQuote =
+        title?.length > 50 ? `${title.slice(0, 50)}...` : title
       return {
         title: truncatedQuote || 'Quote Section',
         subtitle: subtitle || 'No attribution',

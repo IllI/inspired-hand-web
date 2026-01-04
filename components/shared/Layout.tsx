@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { SettingsPayload } from 'types'
 
 export interface LayoutProps {
@@ -23,24 +23,36 @@ export function Layout({ children, settings }: LayoutProps) {
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative">
-
           {/* Left: Navigation (Mission, Success Stories) */}
           <nav className="hidden lg:flex items-center gap-8 w-1/3 justify-start">
-            <Link href="/mission" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+            <Link
+              href="/mission"
+              className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary"
+            >
               Mission
             </Link>
-            <Link href="/success-stories" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+            <Link
+              href="/success-stories"
+              className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary"
+            >
               Success Stories
             </Link>
           </nav>
 
           {/* Center: Logo */}
-          <Link href="/" className="flex items-center justify-center gap-3 absolute left-1/2 transform -translate-x-1/2">
+          <Link
+            href="/"
+            className="flex items-center justify-center gap-3 absolute left-1/2 transform -translate-x-1/2"
+          >
             <span className="font-heading text-2xl font-bold text-ih-text-dark tracking-tight">
               Inspired
             </span>
             {/* Paw Icon */}
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-ih-text-dark">
+            <svg
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-8 h-8 text-ih-text-dark"
+            >
               <path d="M12,2C12,2 11,3 11,4C11,5 12,6 12,6C12,6 13,5 13,4C13,3 12,2 12,2M8,3C8,3 6,4 6,6C6,8 8,9 8,9C8,9 9,8 9,6C9,4 8,3 8,3M16,3C16,3 15,4 15,6C15,8 17,9 17,9C17,9 19,8 19,6C19,4 16,3 16,3M5.5,8C5.5,8 3,9 3,11C3,13 5.5,14 5.5,14C5.5,14 6.5,13 6.5,11C6.5,9 5.5,8 5.5,8M18.5,8C18.5,8 17.5,9 17.5,11C17.5,13 20,14 20,14C20,14 21,13 21,11C21,9 18.5,8 18.5,8M12,8C9.5,8 7,10 7,12.5C7,15 9.5,17 12,17C14.5,17 17,15 17,12.5C17,10 14.5,8 12,8M12,18C9,18 6,19.5 5,22H19C18,19.5 15,18 12,18Z" />
             </svg>
             <span className="font-heading text-2xl font-bold text-ih-text-dark tracking-tight">
@@ -50,7 +62,10 @@ export function Layout({ children, settings }: LayoutProps) {
 
           {/* Right: Navigation (Resources) & Donate */}
           <div className="hidden lg:flex items-center gap-8 w-1/3 justify-end">
-            <Link href="/resources" className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary">
+            <Link
+              href="/resources"
+              className="text-xs font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:text-ih-primary"
+            >
               Resources
             </Link>
             <Link
@@ -58,8 +73,18 @@ export function Layout({ children, settings }: LayoutProps) {
               className="inline-flex items-center gap-2 rounded-sm bg-ih-accent px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-red-700 shadow-sm"
             >
               <span>Donate</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                />
               </svg>
             </Link>
           </div>
@@ -86,7 +111,6 @@ export function Layout({ children, settings }: LayoutProps) {
               </svg>
             </button>
           </div>
-
         </div>
       </header>
 
@@ -98,12 +122,22 @@ export function Layout({ children, settings }: LayoutProps) {
         {/* Newsletter Strip (Visual Match) */}
         <div className="bg-ih-primary py-8 text-center text-ih-text-dark">
           <div className="mx-auto max-w-4xl px-4">
-            <h3 className="text-2xl font-heading font-bold mb-2">Be Inspired</h3>
-            <p className="font-sans mb-4">Join our dedicated community and receive our weekly devotionals.</p>
+            <h3 className="text-2xl font-heading font-bold mb-2">
+              Be Inspired
+            </h3>
+            <p className="font-sans mb-4">
+              Join our dedicated community and receive our weekly devotionals.
+            </p>
             {/* Placeholder for form input */}
             <div className="flex justify-center gap-2 max-w-md mx-auto">
-              <input type="email" placeholder="Enter your email here*" className="px-4 py-2 w-full border border-gray-300" />
-              <button className="bg-ih-text-dark text-white px-6 py-2 uppercase font-bold text-xs tracking-widest">Subscribe</button>
+              <input
+                type="email"
+                placeholder="Enter your email here*"
+                className="px-4 py-2 w-full border border-gray-300"
+              />
+              <button className="bg-ih-text-dark text-white px-6 py-2 uppercase font-bold text-xs tracking-widest">
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
@@ -114,8 +148,14 @@ export function Layout({ children, settings }: LayoutProps) {
             <div className="grid gap-12 md:grid-cols-3 text-center md:text-left">
               {/* Brand column */}
               <div className="flex flex-col items-center md:items-start">
-                <h3 className="text-xl font-heading font-bold leading-tight">INSPIRED HAND<br />MINISTRIES</h3>
-                <p className="mt-4 text-sm text-gray-200 italic font-serif">"Let Every Creature Hear His Calling!"</p>
+                <h3 className="text-xl font-heading font-bold leading-tight">
+                  INSPIRED HAND
+                  <br />
+                  MINISTRIES
+                </h3>
+                <p className="mt-4 text-sm text-gray-200 italic font-serif">
+                  &quot;Let Every Creature Hear His Calling!&quot;
+                </p>
                 <div className="mt-6 flex gap-4">
                   {settings?.socialLinks?.map((social) => (
                     <a
@@ -153,10 +193,15 @@ export function Layout({ children, settings }: LayoutProps) {
               {/* Let's Talk */}
               <div className="flex flex-col items-center md:items-end">
                 <h4 className="mb-6 text-sm font-bold uppercase tracking-widest text-ih-primary">
-                  Let's Talk
+                  Let&apos;s Talk
                 </h4>
-                <p className="text-gray-200 text-sm mb-4">Questions, stories, or thoughts?</p>
-                <Link href="/contact" className="text-white underline decoration-ih-primary hover:text-ih-primary transition-colors">
+                <p className="text-gray-200 text-sm mb-4">
+                  Questions, stories, or thoughts?
+                </p>
+                <Link
+                  href="/contact"
+                  className="text-white underline decoration-ih-primary hover:text-ih-primary transition-colors"
+                >
                   Contact Us
                 </Link>
               </div>

@@ -21,10 +21,10 @@ module.exports = {
     extend: {
       colors: {
         // Original Wix Site Palette
-        'ih-primary': '#bada55',      // Fresh Green (Shop Now, User Highlights)
-        'ih-accent': '#d32300',       // Orange-Red (Donate Button)
-        'ih-secondary': '#335168',    // Dark Slate Blue (Our Story Box)
-        'ih-footer': '#4c7a9c',       // Steel Blue (Footer Background)
+        'ih-primary': '#bada55', // Fresh Green (Shop Now, User Highlights)
+        'ih-accent': '#d32300', // Orange-Red (Donate Button)
+        'ih-secondary': '#335168', // Dark Slate Blue (Our Story Box)
+        'ih-footer': '#4c7a9c', // Steel Blue (Footer Background)
         'ih-text-dark': '#000000',
         'ih-text-light': '#ffffff',
 

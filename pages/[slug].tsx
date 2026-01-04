@@ -4,15 +4,12 @@ import { readToken } from 'lib/sanity.api'
 import { getClient } from 'lib/sanity.client'
 import { pagePaths, pagesBySlugQuery, settingsQuery } from 'lib/sanity.queries'
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import { useLiveQuery } from 'next-sanity/preview'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useLiveQuery } from 'next-sanity/preview'
 import type { PagePayload, SettingsPayload } from 'types'
 
 import type { SharedPageProps } from './_app'
-
-// Debug: Log when module loads
-console.log('[slug].tsx loaded')
 
 interface PageProps extends SharedPageProps {
   page: PagePayload | null
@@ -64,18 +61,6 @@ export default function PageRoute(props: PageProps) {
     : settings?.siteTitle || 'Inspired Hand Ministries'
   const description = page.seoDescription || settings?.tagline || ''
 
-  // Debug logging
-  console.log('[slug] Page data:', {
-    id: page._id,
-    title: page.title,
-    slug: page.slug,
-    moduleCount: page.modules?.length || 0,
-    moduleTypes: page.modules?.map((m) => m._type) || [],
-  })
-
-  // Debug info simplified to avoid TypeScript errors
-  const moduleTypes = page.modules?.map((m) => m._type).join(', ') || 'none'
-
   return (
     <>
       <Head>
@@ -88,11 +73,6 @@ export default function PageRoute(props: PageProps) {
       </Head>
 
       <Layout settings={settings}>
-        {/* Debug banner */}
-        <div className="bg-yellow-100 border-b-4 border-yellow-500 p-4 text-black text-sm">
-          <strong>Debug:</strong> Page: {page._id} | Modules:{' '}
-          {page.modules?.length || 0} | Types: {moduleTypes}
-        </div>
         <ModuleRenderer modules={page.modules} />
       </Layout>
     </>
@@ -103,20 +83,12 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false, params = {} } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  console.log('[slug] getStaticProps called for slug:', params.slug)
-
   const [settings, page] = await Promise.all([
     client.fetch<SettingsPayload | null>(settingsQuery),
     client.fetch<PagePayload | null>(pagesBySlugQuery, {
       slug: params.slug,
     }),
   ])
-
-  console.log('[slug] Fetched page:', {
-    found: !!page,
-    id: page?._id,
-    moduleCount: page?.modules?.length || 0,
-  })
 
   // Don't return 404 for home slug - that's handled by index.tsx
   if (!page && params.slug === 'home') {

@@ -58,8 +58,9 @@ export function Slideshow({ module }: SlideshowProps) {
           return (
             <div
               key={slide._key || index}
-              className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? 'opacity-100' : 'opacity-0'
-                }`}
+              className={`absolute inset-0 transition-opacity duration-700 ${
+                index === currentIndex ? 'opacity-100' : 'opacity-0'
+              }`}
             >
               {imageUrl && (
                 <Image
@@ -156,10 +157,11 @@ export function Slideshow({ module }: SlideshowProps) {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 w-2 rounded-full transition-all sm:h-3 sm:w-3 ${index === currentIndex
+              className={`h-2 w-2 rounded-full transition-all sm:h-3 sm:w-3 ${
+                index === currentIndex
                   ? 'w-6 bg-white sm:w-8'
                   : 'bg-white/50 hover:bg-white/75'
-                }`}
+              }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

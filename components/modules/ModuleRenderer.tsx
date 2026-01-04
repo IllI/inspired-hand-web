@@ -2,13 +2,13 @@ import dynamic from 'next/dynamic'
 import type { PageModule } from 'types'
 
 // Import module components
-import { Hero } from './Hero'
-import { RichTextSection } from './RichTextSection'
-import { TwoColumnSection } from './TwoColumnSection'
 import { CtaSection } from './CtaSection'
-import { QuoteSection } from './QuoteSection'
 import { FormSection } from './FormSection'
+import { Hero } from './Hero'
+import { QuoteSection } from './QuoteSection'
+import { RichTextSection } from './RichTextSection'
 import { Slideshow } from './Slideshow'
+import { TwoColumnSection } from './TwoColumnSection'
 
 // Map of module types to their components
 const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {

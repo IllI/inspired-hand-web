@@ -18,13 +18,12 @@ export function Hero({ module }: HeroProps) {
     <section className="bg-white overflow-hidden">
       <div className="container mx-auto px-4 py-12 md:py-20 lg:py-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-
           {/* Image Column */}
           <div className="relative order-1 lg:order-1 h-[400px] w-full lg:h-[600px]">
             {backgroundUrl ? (
               <Image
                 src={backgroundUrl}
-                alt={heading || "Hero Image"}
+                alt={heading || 'Hero Image'}
                 fill
                 priority
                 className="object-cover object-center rounded-sm shadow-sm"
@@ -62,7 +61,6 @@ export function Hero({ module }: HeroProps) {
               )}
             </div>
           </div>
-
         </div>
       </div>
     </section>

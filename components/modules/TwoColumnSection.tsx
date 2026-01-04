@@ -12,13 +12,19 @@ interface TwoColumnSectionProps {
 const portableTextComponents = {
   block: {
     normal: ({ children }: { children?: React.ReactNode }) => (
-      <p className="mb-4 text-ih-text-dark opacity-80 leading-relaxed font-body">{children}</p>
+      <p className="mb-4 text-ih-text-dark opacity-80 leading-relaxed font-body">
+        {children}
+      </p>
     ),
     h2: ({ children }: { children?: React.ReactNode }) => (
-      <h2 className="mb-4 text-2xl font-bold text-ih-text-dark font-heading">{children}</h2>
+      <h2 className="mb-4 text-2xl font-bold text-ih-text-dark font-heading">
+        {children}
+      </h2>
     ),
     h3: ({ children }: { children?: React.ReactNode }) => (
-      <h3 className="mb-3 text-xl font-semibold text-ih-text-dark font-heading">{children}</h3>
+      <h3 className="mb-3 text-xl font-semibold text-ih-text-dark font-heading">
+        {children}
+      </h3>
     ),
   },
   marks: {
@@ -65,8 +71,9 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
     <section className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div
-          className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
-            }`}
+          className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${
+            isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
+          }`}
         >
           {/* Image Column */}
           <div className="relative aspect-[4/3] overflow-hidden shadow-sm">
@@ -79,7 +86,9 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-gray-100">
-                <span className="text-gray-400 font-mono text-sm">No Image</span>
+                <span className="text-gray-400 font-mono text-sm">
+                  No Image
+                </span>
               </div>
             )}
           </div>
