@@ -22,6 +22,7 @@ import twoColumnSection from 'schemas/objects/twoColumnSection'
 import formSection from 'schemas/objects/formSection'
 import ctaSection from 'schemas/objects/ctaSection'
 import quoteSection from 'schemas/objects/quoteSection'
+import storiesGrid from 'schemas/objects/storiesGrid'
 
 // Singleton schemas
 import settings from 'schemas/singletons/settings'
@@ -50,6 +51,7 @@ export default defineConfig({
       formSection,
       ctaSection,
       quoteSection,
+      storiesGrid,
     ],
   },
   plugins: [

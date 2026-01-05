@@ -37,6 +37,7 @@ export interface HeroModule {
   subheading?: string
   backgroundImage?: SanityImage
   cta?: CTA
+  style?: 'default' | 'speechBubble'
 }
 
 export interface RichTextSectionModule {
@@ -112,6 +113,18 @@ export interface QuoteSectionModule {
   source?: string
   style?: 'default' | 'large' | 'background'
   backgroundImage?: SanityImage
+  authorImage?: SanityImage
+}
+
+export interface StoriesGridModule {
+  _type: 'storiesGrid'
+  _key: string
+  stories?: {
+    _key: string
+    title?: string
+    link?: string
+    image?: SanityImage
+  }[]
 }
 
 // Union type for all modules
@@ -123,6 +136,7 @@ export type PageModule =
   | FormSectionModule
   | CtaSectionModule
   | QuoteSectionModule
+  | StoriesGridModule
 
 // =============================================================================
 // Page Types

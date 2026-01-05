@@ -1,4 +1,5 @@
 import { urlForImage } from 'lib/sanity.image'
+import Image from 'next/image'
 import type { QuoteSectionModule } from 'types'
 
 interface QuoteSectionProps {
@@ -12,6 +13,7 @@ export function QuoteSection({ module }: QuoteSectionProps) {
     source,
     style = 'default',
     backgroundImage,
+    authorImage,
   } = module
 
   if (!quote) {
@@ -20,6 +22,10 @@ export function QuoteSection({ module }: QuoteSectionProps) {
 
   const backgroundUrl = backgroundImage?.asset
     ? urlForImage(backgroundImage)?.width(1920).height(800).url()
+    : null
+
+  const authorImageUrl = authorImage?.asset
+    ? urlForImage(authorImage)?.width(200).height(200).url()
     : null
 
   // Large style
@@ -39,18 +45,30 @@ export function QuoteSection({ module }: QuoteSectionProps) {
             {`"${quote}"`}
           </blockquote>
 
-          {(attribution || source) && (
-            <div className="text-gray-600">
-              {attribution && (
-                <cite className="block text-lg font-semibold not-italic text-amber-700">
-                  — {attribution}
-                </cite>
-              )}
-              {source && (
-                <span className="text-sm text-gray-500">{source}</span>
-              )}
-            </div>
-          )}
+          <div className="flex flex-col items-center justify-center gap-4">
+            {authorImageUrl && (
+              <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-amber-200">
+                <Image
+                  src={authorImageUrl}
+                  alt={attribution || 'Author'}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+            {(attribution || source) && (
+              <div className="text-gray-600">
+                {attribution && (
+                  <cite className="block text-lg font-semibold not-italic text-amber-700">
+                    — {attribution}
+                  </cite>
+                )}
+                {source && (
+                  <span className="text-sm text-gray-500">{source}</span>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     )
@@ -88,49 +106,76 @@ export function QuoteSection({ module }: QuoteSectionProps) {
             {`"${quote}"`}
           </blockquote>
 
-          {(attribution || source) && (
-            <div>
-              {attribution && (
-                <cite className="block text-lg font-semibold not-italic text-amber-400">
-                  — {attribution}
-                </cite>
-              )}
-              {source && (
-                <span className="text-sm text-gray-400">{source}</span>
-              )}
-            </div>
-          )}
+          <div className="flex flex-col items-center justify-center gap-4">
+            {authorImageUrl && (
+              <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-amber-500/50">
+                <Image
+                  src={authorImageUrl}
+                  alt={attribution || 'Author'}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+            {(attribution || source) && (
+              <div>
+                {attribution && (
+                  <cite className="block text-lg font-semibold not-italic text-amber-400">
+                    — {attribution}
+                  </cite>
+                )}
+                {source && (
+                  <span className="text-sm text-gray-400">{source}</span>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     )
   }
 
-  // Default style
+  // Default style (with image support)
   return (
     <section className="bg-amber-50 py-12 md:py-16">
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <svg
-          className="mx-auto mb-4 h-8 w-8 text-amber-600/60"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-        </svg>
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-start md:gap-8">
+          {authorImageUrl && (
+            <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full border-4 border-white shadow-md md:h-32 md:w-32">
+              <Image
+                src={authorImageUrl}
+                alt={attribution || 'Author'}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
 
-        <blockquote className="mb-4 text-lg italic text-gray-800 md:text-xl">
-          {`"${quote}"`}
-        </blockquote>
+          <div className={`text-center ${authorImageUrl ? 'md:text-left' : ''}`}>
+            <svg
+              className={`mb-4 h-8 w-8 text-amber-600/60 ${authorImageUrl ? 'mx-auto md:mx-0' : 'mx-auto'}`}
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
 
-        {(attribution || source) && (
-          <div className="text-gray-600">
-            {attribution && (
-              <cite className="block font-semibold not-italic text-amber-700">
-                — {attribution}
-              </cite>
+            <blockquote className="mb-4 text-lg italic text-gray-800 md:text-xl">
+              {`"${quote}"`}
+            </blockquote>
+
+            {(attribution || source) && (
+              <div className="text-gray-600">
+                {attribution && (
+                  <cite className="block font-semibold not-italic text-amber-700">
+                    — {attribution}
+                  </cite>
+                )}
+                {source && <span className="text-sm text-gray-500">{source}</span>}
+              </div>
             )}
-            {source && <span className="text-sm text-gray-500">{source}</span>}
           </div>
-        )}
+        </div>
       </div>
     </section>
   )

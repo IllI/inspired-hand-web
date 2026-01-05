@@ -8,6 +8,7 @@ import { Hero } from './Hero'
 import { QuoteSection } from './QuoteSection'
 import { RichTextSection } from './RichTextSection'
 import { Slideshow } from './Slideshow'
+import { StoriesGrid } from './StoriesGrid'
 import { TwoColumnSection } from './TwoColumnSection'
 
 // Map of module types to their components
@@ -19,6 +20,7 @@ const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {
   formSection: FormSection,
   ctaSection: CtaSection,
   quoteSection: QuoteSection,
+  storiesGrid: StoriesGrid,
 }
 
 interface ModuleRendererProps {

@@ -28,6 +28,22 @@ export default defineType({
       description: 'Source of the quote (e.g., "The Bible", "Sunday Sermon")',
     }),
     defineField({
+      name: 'authorImage',
+      title: 'Author Image',
+      type: 'image',
+      description: 'Photo of the person quoted',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+        }),
+      ],
+    }),
+    defineField({
       name: 'style',
       title: 'Style',
       type: 'string',

@@ -7,6 +7,7 @@ const moduleProjection = groq`
   _type == "hero" => {
     heading,
     subheading,
+    style,
     backgroundImage {
       ...,
       asset
@@ -81,7 +82,23 @@ const moduleProjection = groq`
     style,
     backgroundImage {
       ...,
-      asset->
+      asset
+    },
+    authorImage {
+      ...,
+      asset
+    }
+  },
+  _type == "storiesGrid" => {
+    stories[] {
+      _key,
+      title,
+      link,
+      image {
+        crop,
+        hotspot,
+        asset
+      }
     }
   }
 `
@@ -117,7 +134,7 @@ export const pagesBySlugQuery = groq`
     seoDescription,
     ogImage {
       ...,
-      asset->
+      asset
     },
     modules[] {
       ${moduleProjection}
@@ -161,7 +178,7 @@ export const settingsQuery = groq`
     },
     ogImage {
       ...,
-      asset->
+      asset
     }
   }
 `
