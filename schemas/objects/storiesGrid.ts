@@ -25,6 +25,8 @@ export default defineType({
       type: 'array',
       of: [
         {
+          name: 'storyItem',
+          title: 'Story',
           type: 'object',
           fields: [
             defineField({
