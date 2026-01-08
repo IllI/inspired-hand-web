@@ -25,41 +25,8 @@ export default defineType({
       type: 'array',
       of: [
         {
-          name: 'storyItem',
-          title: 'Story',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              options: { hotspot: true },
-              fields: [
-                defineField({
-                  name: 'alt',
-                  title: 'Alt Text',
-                  type: 'string',
-                }),
-              ],
-            }),
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-            }),
-            defineField({
-              name: 'link',
-              title: 'Link',
-              type: 'string',
-              description: 'URL or relative path (e.g., /stories/dog-healed)',
-            }),
-          ],
-          preview: {
-            select: {
-              title: 'title',
-              media: 'image',
-            },
-          },
+          type: 'reference',
+          to: [{ type: 'story' }],
         },
       ],
     }),

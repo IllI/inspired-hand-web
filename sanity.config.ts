@@ -13,6 +13,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 
 // Document schemas
 import page from 'schemas/documents/page'
+import story from 'schemas/documents/story'
 
 // Object schemas (modules)
 import hero from 'schemas/objects/hero'
@@ -43,6 +44,7 @@ export default defineConfig({
       settings,
       // Documents
       page,
+      story,
       // Objects (modules for page builder)
       hero,
       richTextSection,
