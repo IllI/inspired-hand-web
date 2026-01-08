@@ -15,17 +15,24 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'attribution',
-      title: 'Attribution',
+      name: 'authorName',
+      title: 'Author Name',
       type: 'string',
-      description:
-        'Who said this quote (e.g., "John 3:16" or "Reverend Smith")',
+      description: 'Name of the person being quoted (e.g., "Theresa")',
     }),
     defineField({
-      name: 'source',
-      title: 'Source',
+      name: 'bookTitle',
+      title: 'Book Title',
       type: 'string',
-      description: 'Source of the quote (e.g., "The Bible", "Sunday Sermon")',
+      description: 'Title of the book (e.g., "Inspired Hand")',
+      initialValue: 'Inspired Hand',
+    }),
+    defineField({
+      name: 'role',
+      title: 'Role/Title',
+      type: 'string',
+      description: 'Their role or title (e.g., "reader")',
+      initialValue: 'reader',
     }),
     defineField({
       name: 'authorImage',
@@ -78,16 +85,16 @@ export default defineType({
   preview: {
     select: {
       title: 'quote',
-      subtitle: 'attribution',
+      authorName: 'authorName',
       media: 'backgroundImage',
     },
-    prepare({ title, subtitle, media }) {
+    prepare({ title, authorName, media }) {
       // Truncate quote for preview
       const truncatedQuote =
         title?.length > 50 ? `${title.slice(0, 50)}...` : title
       return {
         title: truncatedQuote || 'Quote Section',
-        subtitle: subtitle || 'No attribution',
+        subtitle: authorName ? `- ${authorName}` : 'No attribution',
         media,
       }
     },
