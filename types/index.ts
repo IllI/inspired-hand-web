@@ -109,11 +109,34 @@ export interface QuoteSectionModule {
   _type: 'quoteSection'
   _key: string
   quote?: string
-  attribution?: string
-  source?: string
+  authorName?: string
+  bookTitle?: string
+  role?: string
   style?: 'default' | 'large' | 'background'
   backgroundImage?: SanityImage
   authorImage?: SanityImage
+}
+
+// Story document type
+export interface Story {
+  _id: string
+  _type: 'story'
+  title: string
+  slug: {
+    _type: 'slug'
+    current: string
+  }
+  featuredImage?: SanityImage
+  excerpt?: string
+  content?: PortableTextBlock[]
+  seoDescription?: string
+}
+
+// Story reference in grid
+export interface StoryReference {
+  _type: 'reference'
+  _ref: string
+  _key: string
 }
 
 export interface StoriesGridModule {
@@ -121,12 +144,7 @@ export interface StoriesGridModule {
   _key: string
   heading?: string
   description?: string
-  stories?: {
-    _key: string
-    title?: string
-    link?: string
-    image?: SanityImage
-  }[]
+  stories?: (StoryReference | Story)[]
 }
 
 // Union type for all modules

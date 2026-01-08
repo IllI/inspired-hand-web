@@ -77,8 +77,9 @@ const moduleProjection = groq`
   },
   _type == "quoteSection" => {
     quote,
-    attribution,
-    source,
+    authorName,
+    bookTitle,
+    role,
     style,
     backgroundImage {
       ...,
@@ -92,13 +93,14 @@ const moduleProjection = groq`
   _type == "storiesGrid" => {
     heading,
     description,
-    stories[] {
-      _key,
+    stories[]->{
+      _id,
+      _type,
       title,
-      link,
-      image {
-        crop,
-        hotspot,
+      slug,
+      excerpt,
+      featuredImage {
+        ...,
         asset
       }
     }

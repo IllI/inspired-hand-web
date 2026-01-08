@@ -35,18 +35,36 @@ export function StoriesGrid({ module }: StoriesGridProps) {
 
         {/* Stories Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {stories.map((story) => {
-            const imageUrl = story.image?.asset
-              ? urlForImage(story.image)?.width(600).height(400).url()
+          {stories.map((storyOrRef) => {
+            // Type guard: check if it's a reference (not yet resolved) or a full Story object
+            const isReference = '_ref' in storyOrRef && !('title' in storyOrRef)
+
+            // If it's just a reference without resolved data, skip it
+            // (This shouldn't happen with proper GROQ queries, but handles edge cases)
+            if (isReference) {
+              return null
+            }
+
+            // Now TypeScript knows it's a Story
+            const story = storyOrRef as any // Type assertion needed due to union complexity
+
+            const imageUrl = story.featuredImage?.asset
+              ? urlForImage(story.featuredImage)?.width(600).height(400).url()
               : null
 
-            const content = (
-              <>
+            const storyUrl = story.slug?.current ? `/${story.slug.current}` : '#'
+
+            return (
+              <Link
+                key={story._id || story._key || story._ref}
+                href={storyUrl}
+                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
+              >
                 <div className="relative h-64 w-full overflow-hidden bg-gray-200">
                   {imageUrl ? (
                     <Image
                       src={imageUrl}
-                      alt={story.image?.alt || story.title || 'Story image'}
+                      alt={story.featuredImage?.alt || story.title || 'Story image'}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -64,43 +82,29 @@ export function StoriesGrid({ module }: StoriesGridProps) {
                       {story.title}
                     </h3>
                   )}
-                  {story.link && (
-                    <div className="flex items-center text-sm font-semibold text-ih-primary">
-                      <span>Read Story</span>
-                      <svg
-                        className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
+                  {story.excerpt && (
+                    <p className="mb-4 line-clamp-2 text-sm text-gray-600">
+                      {story.excerpt}
+                    </p>
                   )}
+                  <div className="flex items-center text-sm font-semibold text-ih-primary">
+                    <span>Read Story</span>
+                    <svg
+                      className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </>
-            )
-
-            return story.link ? (
-              <Link
-                key={story._key || story.title}
-                href={story.link}
-                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
-              >
-                {content}
               </Link>
-            ) : (
-              <div
-                key={story._key || story.title}
-                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
-              >
-                {content}
-              </div>
             )
           })}
         </div>
