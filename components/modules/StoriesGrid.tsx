@@ -23,15 +23,8 @@ export function StoriesGrid({ module }: StoriesGridProps) {
               ? urlForImage(story.image)?.width(600).height(400).url()
               : null
 
-            const Wrapper = story.link ? Link : 'div'
-            const wrapperProps = story.link ? { href: story.link } : {}
-
-            return (
-              <Wrapper
-                key={story._key || story.title}
-                {...wrapperProps}
-                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
-              >
+            const content = (
+              <>
                 <div className="relative h-64 w-full overflow-hidden bg-gray-200">
                   {imageUrl ? (
                     <Image
@@ -46,7 +39,6 @@ export function StoriesGrid({ module }: StoriesGridProps) {
                       No Image
                     </div>
                   )}
-                  {/* Overlay on hover */}
                   <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10" />
                 </div>
                 <div className="p-6">
@@ -74,7 +66,24 @@ export function StoriesGrid({ module }: StoriesGridProps) {
                     </div>
                   )}
                 </div>
-              </Wrapper>
+              </>
+            )
+
+            return story.link ? (
+              <Link
+                key={story._key || story.title}
+                href={story.link}
+                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
+              >
+                {content}
+              </Link>
+            ) : (
+              <div
+                key={story._key || story.title}
+                className="group relative block overflow-hidden rounded-lg bg-white shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
+              >
+                {content}
+              </div>
             )
           })}
         </div>

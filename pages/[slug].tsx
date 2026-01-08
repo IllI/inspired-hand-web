@@ -6,10 +6,12 @@ import { pagePaths, pagesBySlugQuery, settingsQuery } from 'lib/sanity.queries'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useLiveQuery } from 'next-sanity/preview'
+import dynamic from 'next/dynamic'
 import type { PagePayload, SettingsPayload } from 'types'
 
 import type { SharedPageProps } from './_app'
+
+const PreviewPageRoute = dynamic(() => import('components/preview/PreviewPageRoute'))
 
 interface PageProps extends SharedPageProps {
   page: PagePayload | null
@@ -21,12 +23,15 @@ interface Query {
 }
 
 export default function PageRoute(props: PageProps) {
-  const [page] = useLiveQuery(props.page || null, pagesBySlugQuery, {
-    slug: props.page?.slug || '',
-  })
-  const [settings] = useLiveQuery(props.settings || null, settingsQuery)
-
   const router = useRouter()
+
+  // Use the preview component when in draft mode to enable live queries
+  if (props.draftMode) {
+    return <PreviewPageRoute page={props.page} settings={props.settings} />
+  }
+
+  // Static rendering for production
+  const { page, settings } = props
 
   // Show loading state for fallback pages
   if (router.isFallback) {

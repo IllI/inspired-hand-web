@@ -5,10 +5,12 @@ import { getClient } from 'lib/sanity.client'
 import { homePageQuery, settingsQuery } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useLiveQuery } from 'next-sanity/preview'
+import dynamic from 'next/dynamic'
 import type { HomePagePayload, SettingsPayload } from 'types'
 
 import type { SharedPageProps } from './_app'
+
+const PreviewIndexPage = dynamic(() => import('components/preview/PreviewIndexPage'))
 
 interface PageProps extends SharedPageProps {
   page: HomePagePayload | null
@@ -16,9 +18,13 @@ interface PageProps extends SharedPageProps {
 }
 
 export default function IndexPage(props: PageProps) {
-  const [page] = useLiveQuery(props.page || null, homePageQuery)
-  const [settings] = useLiveQuery(props.settings || null, settingsQuery)
+  // Use the preview component when in draft mode to enable live queries
+  if (props.draftMode) {
+    return <PreviewIndexPage page={props.page} settings={props.settings} />
+  }
 
+  // Static rendering for production
+  const { page, settings } = props
   const title = page?.title || settings?.siteTitle || 'Inspired Hand Ministries'
   const description = page?.seoDescription || settings?.tagline || ''
 
