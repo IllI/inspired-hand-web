@@ -1,0 +1,106 @@
+{
+    "_type": "story",
+    "title": "No Trace of Cancer in Golden Retriever After Two Year Struggle",
+    "slug": {
+        "_type": "slug",
+        "current": "retriever-cancer-battle"
+    },
+    "excerpt": "Gizmo the Golden Retriever's lymphoma disappeared completely after two years of family prayer.",
+    "content": [
+        {
+            "_type": "block",
+            "_key": "p1",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s1",
+                    "text": "We were asking for prayers for our retriever of six years, Gizmo. Very suddenly he went from an energetic and playful terror around the house to completely lethargic. He was still eating but within a week, he was vomiting several times a day. Through it all, he was still the family dog, looking up at us with worried eyes, and a sluggish tail wag."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p2",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s2",
+                    "text": "We immediately took him to the vet and learned it was lymphoma. We tried a one round of chemotherapy, but Gizmo didn't respond well. It was determined he wasn't a good candidate for further chemo treatment. As a family, we decided to be grateful for the time we were given with Gizmo and the time we still have with him. Our youngest daughter was inconsolable."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p3",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s3",
+                    "text": "The doctors had done all they could, so we left it in the hands of the Lord. As a family, it became our daily habit to say a prayer over Gizmo. If we had guests in the house, we would invite them to join us. Some thought it was odd, some felt touched we would invite them."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p4",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s4",
+                    "text": "Prayer with Gizmo became routine. Without realizing it, this routine announced the blessing that it wasn't his time yet. This went on and his vomiting would stop, and his energy began to pick up. It was like winter leading to spring – slowly warming up until one day, the world full of budding life: Gizmo wasn't showing any of his symptoms."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p5",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s5",
+                    "text": "He hadn't been to the vet in a while, because we were (sadly) waiting for him to be called up, but we took him back to see how he was doing. The vet called us back directly to talk about the results. They thought they might have gotten the patient documents mixed up because there wasn't a trace of lymphoma left in little Gizmo, and there's no medical explanation for why."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p6",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s6",
+                    "text": "It made us wonder as a family if we knew God as well as we ought to. I feel we have a role in receiving our miracles, we must be open to them. Miracles are the Lord's will. Prayer works."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p7",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s7",
+                    "text": "The Kaiser Family – Montgomery, AL",
+                    "marks": [
+                        "em"
+                    ]
+                }
+            ],
+            "style": "normal"
+        }
+    ],
+    "seoDescription": "A miraculous story of Gizmo the Golden Retriever whose lymphoma disappeared completely after two years of faithful family prayer."
+}

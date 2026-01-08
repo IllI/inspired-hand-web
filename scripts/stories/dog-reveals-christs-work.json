@@ -1,0 +1,106 @@
+{
+    "_type": "story",
+    "title": "My Dog Opened My Eyes to Christ's Work",
+    "slug": {
+        "_type": "slug",
+        "current": "dog-reveals-christs-work"
+    },
+    "excerpt": "Alex learns to see his dog Reggie as a gift from God and discovers the nature of Christ as Our Shepherd.",
+    "content": [
+        {
+            "_type": "block",
+            "_key": "p1",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s1",
+                    "text": "I was always so busy. I loved my dog, Reggie, but he could be such a headache to deal with. I wanted to provide the best for him, but having to cut short a late night at the office to take Reggie out really made me rethink my choice about getting a pet. I'd drive home, cursing under my breath that this dog could never realize what I have to go through to just put that food in his bowl. Even when I was home and he wanted my attention, I was distracted."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p2",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s2",
+                    "text": "It always seemed like the office got the best of me and Reggie got anything that was left over. I was selfish."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p3",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s3",
+                    "text": "My younger sister loves me saw I wasn't the performing the role God intended me to be with my dog. the person God saw in me, or the person my dog saw in me."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p4",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s4",
+                    "text": "She gave me her copy of The Alpha, the Omega, and Fido. I kind scoffed at it at first, but deep down I knew this was God calling me out and saying something I thought I didn't want to hear. As I got into it, I saw Reggie as my chance to echo in the footsteps of the Lord Our Shepherd by stepping up as the role of shepherd to Reggie – just as God ordained. I better understand the nature of Christ by getting a glimpse of His role as our shepherd."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p5",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s5",
+                    "text": "My love of God increased tenfold after beginning Prayer for Pets. The Lord turned me around. Every time I walk my dog, feed my dog, clean up after my dog, is now a chance to feel the closeness of the Lord and see a glimpse of what He's doing for me. Just as Reggie never gets to see everything I do to look after him, I will never will see everything God does to look after me. All Reggie knows is that he feels loved, just as I feel it through Christ."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p6",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s6",
+                    "text": "Our Savior gifted Reggie to me as sure as the rainbow was gifted to Noah. I hope everyone can feel that direct sense of God as our Shepherd."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p7",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s7",
+                    "text": "Alex Thompson – Houston, TX",
+                    "marks": [
+                        "em"
+                    ]
+                }
+            ],
+            "style": "normal"
+        }
+    ],
+    "seoDescription": "Discover how a busy professional learned to see his dog as a gift from God and found a deeper connection to Christ through caring for his pet."
+}

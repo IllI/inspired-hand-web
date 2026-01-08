@@ -1,0 +1,80 @@
+{
+    "_type": "story",
+    "title": "Destructive Collie Calmed by Lord's Voice",
+    "slug": {
+        "_type": "slug",
+        "current": "destructive-collie-calmed-by-lord"
+    },
+    "excerpt": "Dash, a rescue Collie with destructive behavior, found peace through prayer and God's reassurance.",
+    "content": [
+        {
+            "_type": "block",
+            "_key": "p1",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s1",
+                    "text": "Dash is an adult Collie I rescued a year ago. He has the sweetest personality, never leaving my side when I was home recovering from surgery. That alone earned him a forever-place in my heart."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p2",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s2",
+                    "text": "Dash had one big issue: He destroys everything. I would come home and the cushions would be torn up, the next day, the side of the couch. My shoes had to be locked in the closet. Books. Hair brushes. Any kind of grocery. My bicycle. All wrecked. He's even gone after the drywall in two rooms. In total, over $3500 worth of stuff."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p3",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s3",
+                    "text": "I would get upset, but I just wanted him to be ok. Something was clearly disturbing him. I turned to God for the answers. Dash and I would pray to Jesus and I would tell the Lord how worried I am about my dog. I would tell the Lord that I don't know what to do if he keeps behaving this way and to guide me. My worry dissolved into a calm warmth, like He was speaking to me and Dash, saying not to be afraid, He is looking after both of us even when I'm out of the house."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p4",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s4",
+                    "text": "Dash's demeanor would change, almost to say \"Ok, I trust you.\" I guess he just needed some higher reassurance that he's being looked after when I'm not home. It was a real breakthrough. His chewing stopped. He loves praying me in the mornings and it's our habit each morning before I go to work."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p5",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s5",
+                    "text": "Lindsey Phillips – Durham, NC",
+                    "marks": [
+                        "em"
+                    ]
+                }
+            ],
+            "style": "normal"
+        }
+    ],
+    "seoDescription": "Read how Dash, a destructive rescue Collie, found peace and stopped his destructive behavior through daily prayer and God's guidance."
+}

@@ -1,0 +1,80 @@
+{
+    "_type": "story",
+    "title": "Problematic Behavior Rescue Saved Through Christian Love",
+    "slug": {
+        "_type": "slug",
+        "current": "rescue-saved-through-christian-love"
+    },
+    "excerpt": "Bently, an aggressive rescue lab, transformed through Christian love and prayer into a calm family dog.",
+    "content": [
+        {
+            "_type": "block",
+            "_key": "p1",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s1",
+                    "text": "We rescued a lab named Bently this past fall. When we took him in we had no clue what we were getting ourselves into. From day one, he never got along with our very calm Airedale. Bently kept picking fights. He was very aggressive towards not just other dogs but also men with beards. My father in-law has a beard, so that was a major problem."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p2",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s2",
+                    "text": "A trainer we went to labeled a Bently a reactive dog. We were worried we wouldn't be able to keep him without putting strain on our family. We really thought he was going back to the shelter if he didn't calm down, but doing that would break our promise that we were his Forever Home."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p3",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s3",
+                    "text": "We prayed on the issue. It felt we could hear the Lord directly saying to us that He chose us to be Bently's shepherd here on earth. Christ put this creature in our care because he was a tough case. We decided more than anything, Bently needed the support of good Christian love. We would pray over him and guide him from a solid Christian Foundation."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p4",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s4",
+                    "text": "We always had faith in the Lord. Today Bently can play with other dogs without us having to worry. He doesn't panic either my father in-law is staying with us. We thought Bently would be impossible, but all things are possible through the Lord."
+                }
+            ],
+            "style": "normal"
+        },
+        {
+            "_type": "block",
+            "_key": "p5",
+            "markDefs": [],
+            "children": [
+                {
+                    "_type": "span",
+                    "_key": "s5",
+                    "text": "Rich & Laura Wilmot – Tulsa, OK",
+                    "marks": [
+                        "em"
+                    ]
+                }
+            ],
+            "style": "normal"
+        }
+    ],
+    "seoDescription": "The transformation of Bently, an aggressive rescue lab, through the power of Christian prayer and unconditional love."
+}
