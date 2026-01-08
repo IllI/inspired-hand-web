@@ -119,6 +119,8 @@ export interface QuoteSectionModule {
 export interface StoriesGridModule {
   _type: 'storiesGrid'
   _key: string
+  heading?: string
+  description?: string
   stories?: {
     _key: string
     title?: string
@@ -152,7 +154,7 @@ export interface PagePayload {
 }
 
 // Home page uses the same structure as regular pages
-export interface HomePagePayload extends PagePayload {}
+export interface HomePagePayload extends PagePayload { }
 
 // =============================================================================
 // Settings Types

@@ -8,7 +8,7 @@ interface StoriesGridProps {
 }
 
 export function StoriesGrid({ module }: StoriesGridProps) {
-  const { stories } = module
+  const { stories, heading, description } = module
 
   if (!stories || stories.length === 0) {
     return null
@@ -17,6 +17,23 @@ export function StoriesGrid({ module }: StoriesGridProps) {
   return (
     <section className="bg-gray-50 py-12 md:py-20">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
+        {(heading || description) && (
+          <div className="mb-12 text-center">
+            {heading && (
+              <h2 className="mb-4 font-heading text-3xl font-bold text-gray-900 md:text-4xl">
+                {heading}
+              </h2>
+            )}
+            {description && (
+              <p className="mx-auto max-w-2xl text-lg text-gray-600">
+                {description}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Stories Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {stories.map((story) => {
             const imageUrl = story.image?.asset

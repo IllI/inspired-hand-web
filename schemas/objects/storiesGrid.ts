@@ -8,6 +8,18 @@ export default defineType({
   icon: ThListIcon,
   fields: [
     defineField({
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+      description: 'Main heading for the stories section (e.g., "What are people saying?")',
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'Optional description below the heading',
+    }),
+    defineField({
       name: 'stories',
       title: 'Stories',
       type: 'array',

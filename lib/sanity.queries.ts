@@ -90,6 +90,8 @@ const moduleProjection = groq`
     }
   },
   _type == "storiesGrid" => {
+    heading,
+    description,
     stories[] {
       _key,
       title,
