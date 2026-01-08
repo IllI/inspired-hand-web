@@ -1,0 +1,100 @@
+{
+    "_type": "page",
+    "title": "Success Stories",
+    "slug": {
+        "_type": "slug",
+        "current": "success-stories"
+    },
+    "modules": [
+        {
+            "_type": "quoteSection",
+            "_key": "quote1",
+            "quote": "I firmly recommend to anyone interested in developing an intimacy between the animals God put in their care and the Lord. There is a great deal of useful lessons and excellent advice found in its clear, straightforward approach. God Bless.",
+            "authorName": "Theresa",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote2",
+            "quote": "Dear Rev Hunter, I would like to thank you for your work and for making this knowledge available. My relationship with the Lord and my dogs has changed forever. My friends have noticed too - I've given away two copies as gifts.",
+            "authorName": "James",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote3",
+            "quote": "This is an inspiration to people who want to make a change in their pet's lives. After following your advice, I now know what the Lord wants from me.",
+            "authorName": "Jeff",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote4",
+            "quote": "We have used The Alpha, The Omega, And Fido extensively with our pit-bull mix. Every issue that came up, TATOAF directed us to solid biblical wisdom on how to best deal with it. This has completely changed how we deal with our dog and how she sees us. We don't have her obedience out of fear - we have it out of love.",
+            "authorName": "Mark",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote5",
+            "quote": "By using The Alpha, The Omega, And Fido I've never felt the love of God more radiantly than when I'm at prayer with my pet. The Alpha, The Omega, And Fido has shown me how. I am truly amazed.",
+            "authorName": "Rebecca",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote6",
+            "quote": "The biggest tool I've used to help me build routine has been The Alpha, the Omega, and Fido.",
+            "authorName": "Elena",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote7",
+            "quote": "I always take time in the morning to journal because I feel empowered to set up my day—to choose who I want to be and create the mindset that will carry me through.",
+            "authorName": "Natalie",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote8",
+            "quote": "This journal has helped me focus and re-focus on what's important in my life and my day...and continually helps me remain in a place of gratitude.",
+            "authorName": "Josh",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote9",
+            "quote": "I've learned to see joy in the littlest things, and actually enjoy looking back at my day and writing about how it went each night.",
+            "authorName": "Geri",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        },
+        {
+            "_type": "quoteSection",
+            "_key": "quote10",
+            "quote": "My whole week/day has been revamped as a bi-product of the journal.",
+            "authorName": "Dan",
+            "bookTitle": "Inspired Hand",
+            "role": "reader",
+            "style": "default"
+        }
+    ]
+}
