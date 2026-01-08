@@ -87,12 +87,11 @@ export default function App({
       {draftMode ? (
         <PreviewProvider token={token}>
           <Component {...pageProps} />
+          {isMaybeInsidePresentation && <VisualEditing />}
         </PreviewProvider>
       ) : (
         <Component {...pageProps} />
       )}
-
-      {isMaybeInsidePresentation && <VisualEditing />}
     </>
   )
 }
