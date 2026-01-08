@@ -3,7 +3,7 @@ import 'styles/index.css'
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 import { AppProps } from 'next/app'
 import { IBM_Plex_Mono, Open_Sans, Playfair_Display } from 'next/font/google'
-import { lazy, useSyncExternalStore } from 'react'
+import { lazy, Suspense, useSyncExternalStore } from 'react'
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -30,7 +30,7 @@ const serif = Playfair_Display({
   weight: ['400', '500', '600', '700', '800'],
 })
 
-const subscribe = () => () => {}
+const subscribe = () => () => { }
 
 export default function App({
   Component,
@@ -40,9 +40,10 @@ export default function App({
   const isMaybeInsidePresentation = useSyncExternalStore(
     subscribe,
     () =>
-      window !== parent ||
-      !!opener ||
-      process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true',
+      typeof window !== 'undefined' &&
+      (window !== parent ||
+        !!opener ||
+        process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true'),
     () => process.env.NEXT_PUBLIC_SANITY_VISUAL_EDITING === 'true',
   )
   return (
@@ -84,15 +85,16 @@ export default function App({
         `}
       </style>
 
-      {draftMode ? (
-        <PreviewProvider token={token}>
+      <Suspense fallback={<Component {...pageProps} />}>
+        {draftMode ? (
+          <PreviewProvider token={token}>
+            <Component {...pageProps} />
+            <VisualEditing />
+          </PreviewProvider>
+        ) : (
           <Component {...pageProps} />
-        </PreviewProvider>
-      ) : (
-        <Component {...pageProps} />
-      )}
-
-      {isMaybeInsidePresentation && <VisualEditing />}
+        )}
+      </Suspense>
     </>
   )
 }

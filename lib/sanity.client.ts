@@ -11,22 +11,10 @@ export function getClient(preview?: { token: string }) {
     stega: {
       enabled:
         process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' ||
+        process.env.NODE_ENV === 'development' ||
         typeof preview?.token === 'string',
       studioUrl: basePath,
       logger: console,
-      filter: (props) => {
-        if (typeof props.sourcePath.at(-1) === 'number') {
-          return false
-        }
-        if (props.sourcePath.at(0) === 'duration') {
-          return false
-        }
-        switch (props.sourcePath.at(-1)) {
-          case 'site':
-            return false
-        }
-        return props.filterDefault(props)
-      },
     },
   })
   if (preview) {
@@ -38,6 +26,12 @@ export function getClient(preview?: { token: string }) {
       useCdn: false,
       ignoreBrowserTokenWarning: true,
       perspective: 'previewDrafts',
+      resultSourceMap: true,
+      stega: {
+        enabled: true,
+        studioUrl: basePath,
+        logger: console,
+      },
     })
   }
   return client

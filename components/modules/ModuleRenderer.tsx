@@ -75,9 +75,9 @@ export function ModuleRenderer({ modules }: ModuleRendererProps) {
   }
 
   return (
-    <main className="flex flex-col">
+    <div className="flex flex-col">
       {modules.map((module, index) => renderModule(module, index))}
-    </main>
+    </div>
   )
 }
 

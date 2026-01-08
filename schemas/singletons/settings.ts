@@ -97,6 +97,28 @@ export default defineType({
           description: 'Source of the footer quote (e.g., "1 John 1:5")',
         }),
         defineField({
+          name: 'newsletterHeading',
+          title: 'Newsletter Heading',
+          type: 'string',
+          initialValue: 'Be Inspired',
+          description: 'Heading for the newsletter section above the footer',
+        }),
+        defineField({
+          name: 'newsletterSubtext',
+          title: 'Newsletter Subtext',
+          type: 'text',
+          rows: 2,
+          initialValue: 'Join our dedicated community and receive our weekly devotionals.',
+          description: 'Subtext for the newsletter section',
+        }),
+        defineField({
+          name: 'hideNewsletter',
+          title: 'Hide Newsletter',
+          type: 'boolean',
+          initialValue: false,
+          description: 'Hide the newsletter strip globally',
+        }),
+        defineField({
           name: 'links',
           title: 'Footer Links',
           type: 'array',

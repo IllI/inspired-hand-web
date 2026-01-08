@@ -109,6 +109,7 @@ const moduleProjection = groq`
 export const homePageQuery = groq`
   *[_type == "page" && slug.current == "home"][0] {
     _id,
+    _type,
     title,
     "slug": slug.current,
     seoDescription,
@@ -131,6 +132,7 @@ export const homePageTitleQuery = groq`
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
     _id,
+    _type,
     title,
     "slug": slug.current,
     seoDescription,
@@ -167,6 +169,9 @@ export const settingsQuery = groq`
       copyrightText,
       quote,
       quoteAttribution,
+      newsletterHeading,
+      newsletterSubtext,
+      hideNewsletter,
       links[] {
         _key,
         label,

@@ -116,7 +116,7 @@ const portableTextComponents = {
 export function RichTextSection({ module }: RichTextSectionProps) {
   const { heading, content } = module
 
-  if (!content || content.length === 0) {
+  if (!heading && (!content || content.length === 0)) {
     return null
   }
 
@@ -129,9 +129,11 @@ export function RichTextSection({ module }: RichTextSectionProps) {
           </h2>
         )}
 
-        <div className="prose prose-lg max-w-none">
-          <PortableText value={content} components={portableTextComponents} />
-        </div>
+        {content && content.length > 0 && (
+          <div className="prose prose-lg max-w-none">
+            <PortableText value={content} components={portableTextComponents} />
+          </div>
+        )}
       </div>
     </section>
   )

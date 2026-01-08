@@ -177,6 +177,9 @@ export interface Footer {
   quote?: string
   quoteAttribution?: string
   links?: FooterLink[]
+  newsletterHeading?: string
+  newsletterSubtext?: string
+  hideNewsletter?: boolean
 }
 
 export interface SocialLink {

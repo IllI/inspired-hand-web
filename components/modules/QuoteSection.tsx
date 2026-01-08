@@ -42,7 +42,7 @@ export function QuoteSection({ module }: QuoteSectionProps) {
           </svg>
 
           <blockquote className="mb-6 text-2xl font-medium italic text-gray-900 md:text-3xl lg:text-4xl">
-            {`"${quote}"`}
+            &quot;{quote}&quot;
           </blockquote>
 
           <div className="flex flex-col items-center justify-center gap-4">
@@ -82,10 +82,10 @@ export function QuoteSection({ module }: QuoteSectionProps) {
         style={
           backgroundUrl
             ? {
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${backgroundUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${backgroundUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }
             : undefined
         }
       >
@@ -103,7 +103,7 @@ export function QuoteSection({ module }: QuoteSectionProps) {
           </svg>
 
           <blockquote className="mb-6 text-xl font-medium italic text-white md:text-2xl lg:text-3xl">
-            {`"${quote}"`}
+            &quot;{quote}&quot;
           </blockquote>
 
           <div className="flex flex-col items-center justify-center gap-4">
@@ -161,7 +161,7 @@ export function QuoteSection({ module }: QuoteSectionProps) {
             </svg>
 
             <blockquote className="mb-4 text-lg italic text-gray-800 md:text-xl">
-              {`"${quote}"`}
+              &quot;{quote}&quot;
             </blockquote>
 
             {(attribution || source) && (
