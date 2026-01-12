@@ -174,7 +174,18 @@ async function createOrReplaceDocument(doc) {
 // Extraction & Transformation
 // =============================================================================
 
-function clean(t) { return t.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").trim(); }
+function clean(t) {
+    return t.replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&#39;/g, "'")
+        .replace(/&rsquo;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
 
 const GARBAGE = ["top of page", "skip to content", "menu", "search", "cart", "log in"];
 
