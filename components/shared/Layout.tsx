@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,14 +10,11 @@ export interface LayoutProps {
 }
 
 export function Layout({ children, settings }: LayoutProps) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const siteTitle = settings?.siteTitle || 'Inspired Hand Ministries'
   const navigation = settings?.navigation || []
   const footer = settings?.footer
   const logo = settings?.logo
-
-  const logoUrl = logo?.asset
-    ? urlForImage(logo)?.width(200).height(80).url()
-    : null
 
   return (
     <div className="flex min-h-screen flex-col bg-white text-gray-900 font-sans">
@@ -89,29 +87,38 @@ export function Layout({ children, settings }: LayoutProps) {
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle (Visible on small screens) */}
+          {/* Mobile Menu Toggle */}
           <div className="lg:hidden ml-auto">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-ih-primary"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-ih-primary focus:outline-none"
               aria-label="Open menu"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              {isMobileMenuOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-24 shadow-lg flex flex-col p-4 space-y-4 animate-fadeIn">
+            <Link href="/mission" className="block text-sm font-bold uppercase tracking-widest text-ih-text-dark hover:text-ih-primary" onClick={() => setIsMobileMenuOpen(false)}>Mission</Link>
+            <Link href="/success-stories" className="block text-sm font-bold uppercase tracking-widest text-ih-text-dark hover:text-ih-primary" onClick={() => setIsMobileMenuOpen(false)}>Success Stories</Link>
+            <Link href="/resources" className="block text-sm font-bold uppercase tracking-widest text-ih-text-dark hover:text-ih-primary" onClick={() => setIsMobileMenuOpen(false)}>Resources</Link>
+            <Link href="/support-us" className="inline-flex items-center justify-center gap-2 rounded-sm bg-ih-accent px-6 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-red-700 transition-all w-full" onClick={() => setIsMobileMenuOpen(false)}>
+              Donate
+            </Link>
+          </div>
+        )}
       </header>
 
       {/* Main content */}
@@ -265,5 +272,3 @@ function SocialIcon({ platform }: { platform?: string }) {
       )
   }
 }
-
-export default Layout
