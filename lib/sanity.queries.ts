@@ -130,9 +130,9 @@ export const homePageTitleQuery = groq`
   *[_type == "page" && slug.current == "home"][0].title
 `
 
-// Page by slug query - fetches any page with full module data
+// Page by slug query - fetches any page or story with full data
 export const pagesBySlugQuery = groq`
-  *[_type == "page" && slug.current == $slug][0] {
+  *[_type in ["page", "story"] && slug.current == $slug][0] {
     _id,
     _type,
     title,
@@ -142,15 +142,23 @@ export const pagesBySlugQuery = groq`
       ...,
       asset
     },
+    // Page specific
     modules[] {
       ${moduleProjection}
+    },
+    // Story specific
+    excerpt,
+    content,
+    featuredImage {
+      ...,
+      asset
     }
   }
 `
 
 // All page paths for static generation
 export const pagePaths = groq`
-  *[_type == "page" && slug.current != null].slug.current
+  *[_type in ["page", "story"] && slug.current != null].slug.current
 `
 
 // Settings query - fetches global site configuration

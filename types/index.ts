@@ -164,11 +164,16 @@ export type PageModule =
 
 export interface PagePayload {
   _id?: string
+  _type?: string
   title?: string
   slug?: string
   seoDescription?: string
   ogImage?: SanityImage
   modules?: PageModule[]
+  // Story fields
+  excerpt?: string
+  content?: PortableTextBlock[]
+  featuredImage?: SanityImage
 }
 
 // Home page uses the same structure as regular pages

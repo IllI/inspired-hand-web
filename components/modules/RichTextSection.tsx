@@ -8,7 +8,7 @@ interface RichTextSectionProps {
 }
 
 // Custom components for Portable Text rendering
-const portableTextComponents = {
+export const portableTextComponents = {
   types: {
     image: ({ value }: { value: any }) => {
       if (!value?.asset) return null
