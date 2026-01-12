@@ -37,7 +37,7 @@ export interface HeroModule {
   subheading?: string
   backgroundImage?: SanityImage
   cta?: CTA
-  style?: 'default' | 'speechBubble'
+  style?: 'default' | 'speechBubble' | 'imageOverlay'
 }
 
 export interface RichTextSectionModule {

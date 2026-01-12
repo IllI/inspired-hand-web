@@ -44,7 +44,7 @@ export function Hero({ module }: HeroProps) {
             <div className="group relative max-w-2xl">
               {/* Bubble Tail */}
               <div className="absolute -top-4 left-1/2 -ml-4 h-8 w-8 rotate-45 border-l border-t border-gray-200 bg-white transition-colors group-hover:border-ih-primary group-hover:bg-ih-primary" />
-              
+
               <div className="relative rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-md transition-all group-hover:-translate-y-1 group-hover:border-ih-primary group-hover:bg-ih-primary group-hover:shadow-xl">
                 {heading && (
                   <h1 className="mb-4 font-heading text-3xl font-bold text-ih-text-dark transition-colors group-hover:text-white sm:text-4xl md:text-5xl">
@@ -71,6 +71,52 @@ export function Hero({ module }: HeroProps) {
               </div>
             )}
           </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Image Overlay Style (for Mission/Resources)
+  if (style === 'imageOverlay') {
+    return (
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        {backgroundUrl && (
+          <>
+            <Image
+              src={backgroundUrl}
+              alt={heading || 'Hero Background'}
+              fill
+              priority
+              className="object-cover"
+            />
+            {/* Dark Overlay for readability */}
+            <div className="absolute inset-0 bg-black/30" />
+          </>
+        )}
+
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          {heading && (
+            <h1 className="mb-6 font-heading text-4xl font-bold text-white shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
+              {heading}
+            </h1>
+          )}
+          {subheading && (
+            <p className="mx-auto max-w-3xl font-body text-xl text-white/90 shadow-sm md:text-2xl">
+              {subheading}
+            </p>
+          )}
+          {cta?.label && cta?.link && (
+            <div className="mt-8">
+              <Link
+                href={cta.link}
+                className="inline-block rounded-md bg-ih-accent px-8 py-3 font-bold uppercase tracking-widest text-white transition-transform hover:scale-105"
+              >
+                {cta.label}
+              </Link>
+            </div>
+          )}
         </div>
       </section>
     )
