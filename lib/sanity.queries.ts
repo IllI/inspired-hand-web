@@ -104,6 +104,16 @@ const moduleProjection = groq`
         asset
       }
     }
+  },
+  _type == "compositeFeatureSection" => {
+    variant,
+    heading,
+    subheading,
+    image {
+      ...,
+      asset
+    },
+    link
   }
 `
 
