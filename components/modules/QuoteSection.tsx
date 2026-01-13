@@ -170,6 +170,8 @@ export function QuoteSection({ module }: QuoteSectionProps) {
   }
 
   // Default style (with image support)
+  const { role } = module // Ensure role is destructured if not already
+
   return (
     <section className="bg-amber-50 py-12 md:py-16">
       <div className="mx-auto max-w-3xl px-6">
@@ -198,14 +200,26 @@ export function QuoteSection({ module }: QuoteSectionProps) {
               &quot;{quote}&quot;
             </blockquote>
 
-            {(attribution || source) && (
+            {(attribution || source || role) && (
               <div className="text-gray-600">
-                {attribution && (
-                  <cite className="block font-semibold not-italic text-amber-700">
-                    — {attribution}
-                  </cite>
-                )}
-                {source && <span className="text-sm text-gray-500">{source}</span>}
+                <div className="text-lg">
+                  {attribution && (
+                    <cite className="inline font-semibold not-italic text-amber-700">
+                      — {attribution}
+                    </cite>
+                  )}
+                  {source && (
+                    <>
+                      <span className="text-amber-700 mr-1">, </span>
+                      <span className="text-amber-700 italic font-semibold">{source}</span>
+                    </>
+                  )}
+                  {role && (
+                    <span className="text-amber-700 font-semibold ml-1">
+                      {role}
+                    </span>
+                  )}
+                </div>
               </div>
             )}
           </div>
