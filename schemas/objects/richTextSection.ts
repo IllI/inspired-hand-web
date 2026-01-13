@@ -75,6 +75,30 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'centered',
+      title: 'Center Text',
+      type: 'boolean',
+      description: 'Center the heading and content',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'cta',
+      title: 'Call to Action',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Button Label',
+          type: 'string',
+        }),
+        defineField({
+          name: 'link',
+          title: 'Button Link',
+          type: 'string',
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {
