@@ -57,6 +57,7 @@ export default defineType({
         defineArrayMember({ type: 'ctaSection' }),
         defineArrayMember({ type: 'quoteSection' }),
         defineArrayMember({ type: 'storiesGrid' }),
+        defineArrayMember({ type: 'compositeFeatureSection' }),
       ],
     }),
   ],
