@@ -111,7 +111,7 @@ export function Hero({ module }: HeroProps) {
             <div className="mt-8">
               <Link
                 href={cta.link}
-                className="inline-block rounded-md bg-ih-accent px-8 py-3 font-bold uppercase tracking-widest text-white transition-transform hover:scale-105"
+                className="inline-block rounded-md bg-ih-primary px-8 py-3 font-bold uppercase tracking-widest text-ih-text-dark transition-transform hover:scale-105"
               >
                 {cta.label}
               </Link>

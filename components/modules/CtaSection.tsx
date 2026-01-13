@@ -23,22 +23,22 @@ export function CtaSection({ module }: CtaSectionProps) {
   // Style configurations based on the style prop
   const styleConfig = {
     primary: {
-      bg: 'bg-gray-900',
-      text: 'text-white',
-      subtext: 'text-gray-300',
-      button: 'bg-amber-600 hover:bg-amber-700 text-white',
+      bg: 'bg-ih-primary',
+      text: 'text-ih-text-dark',
+      subtext: 'text-ih-text-dark/90',
+      button: 'bg-ih-accent text-white hover:bg-opacity-90',
     },
     secondary: {
       bg: 'bg-gray-100',
       text: 'text-gray-900',
       subtext: 'text-gray-600',
-      button: 'bg-gray-900 hover:bg-gray-800 text-white',
+      button: 'bg-ih-text-dark text-white hover:bg-ih-primary hover:text-ih-text-dark',
     },
     accent: {
-      bg: 'bg-amber-600',
+      bg: 'bg-ih-accent',
       text: 'text-white',
-      subtext: 'text-amber-100',
-      button: 'bg-white hover:bg-gray-100 text-amber-700',
+      subtext: 'text-white/90',
+      button: 'bg-white text-ih-accent hover:bg-gray-100',
     },
   }
 
@@ -46,25 +46,23 @@ export function CtaSection({ module }: CtaSectionProps) {
 
   return (
     <section
-      className={`relative overflow-hidden py-16 md:py-24 ${
-        backgroundUrl ? '' : config.bg
-      }`}
+      className={`relative overflow-hidden py-16 md:py-24 ${backgroundUrl ? '' : config.bg
+        }`}
       style={
         backgroundUrl
           ? {
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${backgroundUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }
           : undefined
       }
     >
       <div className="mx-auto max-w-4xl px-6 text-center">
         {heading && (
           <h2
-            className={`mb-4 text-3xl font-bold md:text-4xl lg:text-5xl ${
-              backgroundUrl ? 'text-white' : config.text
-            }`}
+            className={`mb-4 text-3xl font-bold md:text-4xl lg:text-5xl ${backgroundUrl ? 'text-white' : config.text
+              }`}
           >
             {heading}
           </h2>
@@ -72,9 +70,8 @@ export function CtaSection({ module }: CtaSectionProps) {
 
         {description && (
           <p
-            className={`mx-auto mb-8 max-w-2xl text-lg md:text-xl ${
-              backgroundUrl ? 'text-gray-200' : config.subtext
-            }`}
+            className={`mx-auto mb-8 max-w-2xl text-lg md:text-xl ${backgroundUrl ? 'text-gray-200' : config.subtext
+              }`}
           >
             {description}
           </p>
@@ -83,11 +80,10 @@ export function CtaSection({ module }: CtaSectionProps) {
         {buttonLabel && buttonLink && (
           <Link
             href={buttonLink}
-            className={`inline-block rounded-lg px-8 py-4 text-lg font-semibold transition-colors ${
-              backgroundUrl
-                ? 'bg-amber-600 text-white hover:bg-amber-700'
-                : config.button
-            }`}
+            className={`inline-block rounded-lg px-8 py-4 text-lg font-semibold transition-colors ${backgroundUrl
+              ? 'bg-amber-600 text-white hover:bg-amber-700'
+              : config.button
+              }`}
           >
             {buttonLabel}
           </Link>
@@ -97,8 +93,8 @@ export function CtaSection({ module }: CtaSectionProps) {
       {/* Decorative elements for visual interest */}
       {!backgroundUrl && style === 'primary' && (
         <>
-          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-amber-600/10" />
-          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-amber-600/10" />
+          <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-white/20" />
+          <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-white/20" />
         </>
       )}
     </section>

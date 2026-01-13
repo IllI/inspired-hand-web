@@ -9,8 +9,8 @@ interface QuoteSectionProps {
 export function QuoteSection({ module }: QuoteSectionProps) {
   const {
     quote,
-    attribution,
-    source,
+    authorName: attribution,
+    bookTitle: source,
     style = 'default',
     backgroundImage,
     authorImage,
@@ -27,6 +27,40 @@ export function QuoteSection({ module }: QuoteSectionProps) {
   const authorImageUrl = authorImage?.asset
     ? urlForImage(authorImage)?.width(200).height(200).url()
     : null
+
+  // Simple style (Light Grey - Wix Match)
+  if (style === 'simple') {
+    return (
+      <section className="bg-gray-100 py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <svg
+            className="mx-auto mb-6 h-10 w-10 text-ih-primary"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          </svg>
+
+          <blockquote className="mb-6 text-xl font-medium italic text-gray-800 md:text-2xl lg:text-3xl font-heading">
+            &quot;{quote}&quot;
+          </blockquote>
+
+          {(attribution || source) && (
+            <div className="flex flex-col items-center gap-1">
+              {attribution && (
+                <cite className="block text-lg font-semibold not-italic text-gray-900 font-body">
+                  — {attribution}
+                </cite>
+              )}
+              {source && (
+                <span className="text-sm text-gray-500 font-body">{source}</span>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
 
   // Large style
   if (style === 'large') {

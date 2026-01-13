@@ -1,6 +1,7 @@
 import { PortableText } from '@portabletext/react'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { RichTextSectionModule } from 'types'
 
 interface RichTextSectionProps {
@@ -114,24 +115,48 @@ export const portableTextComponents = {
 }
 
 export function RichTextSection({ module }: RichTextSectionProps) {
-  const { heading, content } = module
+  const { heading, content, cta, centered } = module
 
-  if (!heading && (!content || content.length === 0)) {
+  if (!heading && (!content || content.length === 0) && !cta) {
     return null
   }
 
   return (
     <section className="py-12 md:py-16">
-      <div className="mx-auto max-w-3xl px-6">
+      <div className={`mx-auto max-w-3xl px-6 ${centered ? 'text-center' : ''}`}>
         {heading && (
-          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
+          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl font-heading">
             {heading}
           </h2>
         )}
 
         {content && content.length > 0 && (
-          <div className="prose prose-lg max-w-none">
-            <PortableText value={content} components={portableTextComponents} />
+          <div className={`prose prose-lg max-w-none ${centered ? 'text-center' : ''}`}>
+            <PortableText
+              value={content}
+              components={{
+                ...portableTextComponents,
+                block: {
+                  ...portableTextComponents.block,
+                  normal: ({ children }: { children?: React.ReactNode }) => (
+                    <p className={`mb-4 text-gray-700 leading-relaxed ${centered ? 'text-center' : ''}`}>
+                      {children}
+                    </p>
+                  ),
+                }
+              }}
+            />
+          </div>
+        )}
+
+        {cta?.label && cta?.link && (
+          <div className="mt-8">
+            <Link
+              href={cta.link}
+              className="inline-block rounded-md bg-ih-primary px-8 py-3 text-lg font-bold uppercase tracking-widest text-ih-text-dark transition-transform hover:scale-105"
+            >
+              {cta.label}
+            </Link>
           </div>
         )}
       </div>

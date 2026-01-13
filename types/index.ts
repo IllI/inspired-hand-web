@@ -45,6 +45,8 @@ export interface RichTextSectionModule {
   _key: string
   heading?: string
   content?: PortableTextBlock[]
+  cta?: CTA
+  centered?: boolean
 }
 
 export interface SlideItem {
@@ -70,6 +72,7 @@ export interface TwoColumnSectionModule {
   layout?: 'image-left' | 'image-right'
   heading?: string
   content?: PortableTextBlock[]
+  style?: 'transparent' | 'primary' | 'accent' | 'secondary'
   image?: SanityImage
   cta?: CTA
 }
@@ -112,7 +115,7 @@ export interface QuoteSectionModule {
   authorName?: string
   bookTitle?: string
   role?: string
-  style?: 'default' | 'large' | 'background'
+  style?: 'default' | 'large' | 'background' | 'simple'
   backgroundImage?: SanityImage
   authorImage?: SanityImage
 }
