@@ -160,6 +160,14 @@ export interface CompositeFeatureSectionModule {
   link?: string
 }
 
+export interface TestimonialSectionModule {
+  _type: 'testimonialSection'
+  _key: string
+  quote: string
+  authorName?: string
+  rating?: number
+}
+
 // Union type for all modules
 export type PageModule =
   | HeroModule
@@ -171,6 +179,7 @@ export type PageModule =
   | QuoteSectionModule
   | StoriesGridModule
   | CompositeFeatureSectionModule
+  | TestimonialSectionModule
 
 // =============================================================================
 // Page Types

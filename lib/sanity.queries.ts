@@ -114,6 +114,11 @@ const moduleProjection = groq`
       asset
     },
     link
+  },
+  _type == "testimonialSection" => {
+    quote,
+    authorName,
+    rating
   }
 `
 
