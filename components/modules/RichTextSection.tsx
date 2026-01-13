@@ -123,34 +123,27 @@ export function RichTextSection({ module }: RichTextSectionProps) {
 
   return (
     <section className="py-12 md:py-16">
-      <div className={`mx-auto max-w-3xl px-6 ${centered ? 'text-center' : ''}`}>
+      <div className="mx-auto max-w-3xl px-6">
         {heading && (
-          <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl font-heading">
+          <h2
+            className={`mb-8 text-3xl font-bold text-gray-900 md:text-4xl font-heading ${centered ? 'text-center' : ''
+              }`}
+          >
             {heading}
           </h2>
         )}
 
         {content && content.length > 0 && (
-          <div className={`prose prose-lg max-w-none ${centered ? 'text-center' : ''}`}>
+          <div className="prose prose-lg max-w-none">
             <PortableText
               value={content}
-              components={{
-                ...portableTextComponents,
-                block: {
-                  ...portableTextComponents.block,
-                  normal: ({ children }: { children?: React.ReactNode }) => (
-                    <p className={`mb-4 text-gray-700 leading-relaxed ${centered ? 'text-center' : ''}`}>
-                      {children}
-                    </p>
-                  ),
-                }
-              }}
+              components={portableTextComponents}
             />
           </div>
         )}
 
         {cta?.label && cta?.link && (
-          <div className="mt-8">
+          <div className={`mt-8 ${centered ? 'text-center' : ''}`}>
             <Link
               href={cta.link}
               className="inline-block rounded-md bg-ih-primary px-8 py-3 text-lg font-bold uppercase tracking-widest text-ih-text-dark transition-transform hover:scale-105"
