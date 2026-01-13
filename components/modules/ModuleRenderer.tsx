@@ -10,6 +10,7 @@ import { RichTextSection } from './RichTextSection'
 import { Slideshow } from './Slideshow'
 import { StoriesGrid } from './StoriesGrid'
 import { TwoColumnSection } from './TwoColumnSection'
+import { CompositeFeatureSection } from './CompositeFeatureSection'
 
 // Map of module types to their components
 const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {
@@ -21,6 +22,7 @@ const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {
   ctaSection: CtaSection,
   quoteSection: QuoteSection,
   storiesGrid: StoriesGrid,
+  compositeFeatureSection: CompositeFeatureSection,
 }
 
 interface ModuleRendererProps {

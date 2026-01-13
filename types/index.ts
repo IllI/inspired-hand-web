@@ -150,6 +150,16 @@ export interface StoriesGridModule {
   stories?: (StoryReference | Story)[]
 }
 
+export interface CompositeFeatureSectionModule {
+  _type: 'compositeFeatureSection'
+  _key: string
+  variant?: 'bringsComfort' | 'default'
+  heading?: string
+  subheading?: string
+  image?: SanityImage
+  link?: string
+}
+
 // Union type for all modules
 export type PageModule =
   | HeroModule
@@ -160,6 +170,7 @@ export type PageModule =
   | CtaSectionModule
   | QuoteSectionModule
   | StoriesGridModule
+  | CompositeFeatureSectionModule
 
 // =============================================================================
 // Page Types
