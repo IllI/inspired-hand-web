@@ -28,9 +28,22 @@ interface CompositeFeatureSectionProps {
 export function CompositeFeatureSection({ module }: CompositeFeatureSectionProps) {
     const { variant = 'bringsComfort', heading, subheading, image } = module
 
-    const imageUrl = image?.asset
-        ? urlForImage(image)?.width(1200).height(1200).url()
-        : null
+    // Try to get image URL with multiple fallback strategies
+    let imageUrl: string | null = null
+
+    if (image?.asset) {
+        try {
+            // Primary: Use urlForImage helper
+            imageUrl = urlForImage(image)?.width(1200).height(1200).url() || null
+
+            // Fallback: Direct URL from asset if available
+            if (!imageUrl && typeof image.asset === 'object' && 'url' in image.asset) {
+                imageUrl = (image.asset as any).url
+            }
+        } catch (error) {
+            console.error('Error generating image URL:', error)
+        }
+    }
 
     // "Brings Comfort" variant - green background with split layout
     if (variant === 'bringsComfort') {
@@ -78,8 +91,8 @@ export function CompositeFeatureSection({ module }: CompositeFeatureSectionProps
                     </div>
 
                     {/* Right Column - Photo */}
-                    <div className="relative flex-1 min-h-[350px] lg:min-h-0">
-                        {imageUrl ? (
+                    <div className="relative flex-1 min-h-[350px] lg:min-h-0 bg-gray-100">
+                        {imageUrl && (
                             <Image
                                 src={imageUrl}
                                 alt={image?.alt || heading || 'Feature image'}
@@ -87,12 +100,6 @@ export function CompositeFeatureSection({ module }: CompositeFeatureSectionProps
                                 className="object-cover"
                                 priority
                             />
-                        ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-gray-200">
-                                <span className="text-gray-400 font-mono text-sm">
-                                    Add an image in Sanity
-                                </span>
-                            </div>
                         )}
                     </div>
                 </div>
