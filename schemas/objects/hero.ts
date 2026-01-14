@@ -26,6 +26,7 @@ export default defineType({
         list: [
           { title: 'Default', value: 'default' },
           { title: 'Speech Bubble', value: 'speechBubble' },
+          { title: 'Image Overlay', value: 'imageOverlay' },
         ],
         layout: 'radio',
       },

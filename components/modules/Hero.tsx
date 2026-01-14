@@ -76,10 +76,10 @@ export function Hero({ module }: HeroProps) {
     )
   }
 
-  // Image Overlay Style (for Mission/Resources)
+  // Image Overlay Style (Wix-style centered overlay)
   if (style === 'imageOverlay') {
     return (
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[70vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         {backgroundUrl && (
           <>
@@ -89,34 +89,69 @@ export function Hero({ module }: HeroProps) {
               fill
               priority
               className="object-cover"
+              sizes="100vw"
             />
-            {/* Dark Overlay for readability */}
-            <div className="absolute inset-0 bg-black/30" />
+            {/* Light overlay for the image */}
+            <div className="absolute inset-0 bg-white/20" />
           </>
         )}
 
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          {heading && (
-            <h1 className="mb-6 font-heading text-4xl font-bold text-white shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-              {heading}
-            </h1>
-          )}
-          {subheading && (
-            <p className="mx-auto max-w-3xl font-body text-xl text-white/90 shadow-sm md:text-2xl">
-              {subheading}
-            </p>
-          )}
-          {cta?.label && cta?.link && (
-            <div className="mt-8">
-              <Link
-                href={cta.link}
-                className="inline-block rounded-md bg-ih-primary px-8 py-3 font-bold uppercase tracking-widest text-ih-text-dark transition-transform hover:scale-105"
-              >
-                {cta.label}
-              </Link>
+        {/* Centered Content Box with semi-transparent background */}
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Semi-transparent overlay box */}
+            <div className="bg-white/80 backdrop-blur-sm px-8 py-12 md:px-12 md:py-16">
+              {/* Logo/Brand name at top */}
+              <div className="mb-4">
+                <p className="font-serif text-2xl md:text-3xl text-ih-text-dark tracking-wide">
+                  Inspired Hand
+                </p>
+              </div>
+
+              {/* Subheading in italic serif */}
+              {subheading && (
+                <p className="mb-6 font-serif italic text-lg md:text-xl text-ih-text-dark/80">
+                  Discover <span className="italic">Inspired Hand</span>
+                </p>
+              )}
+
+              {/* Main heading - large, bold, sans-serif, letter-spaced */}
+              {heading && (
+                <h1 className="mb-8 font-sans text-4xl md:text-5xl lg:text-6xl font-bold text-ih-text-dark tracking-[0.15em] leading-tight">
+                  {heading}
+                </h1>
+              )}
+
+              {/* CTA Button - Yellow/Gold background */}
+              {cta?.label && cta?.link && (
+                <Link
+                  href={cta.link}
+                  className="inline-block bg-[#F5D547] hover:bg-[#F0CC33] px-12 py-4 font-sans text-sm font-bold uppercase tracking-widest text-black transition-all shadow-md hover:shadow-lg"
+                >
+                  {cta.label}
+                </Link>
+              )}
             </div>
-          )}
+
+            {/* Down arrow icon */}
+            <div className="mt-8 flex justify-center">
+              <a
+                href="#stories-grid"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-black/70 hover:bg-black transition-colors"
+              >
+                <svg
+                  className="h-6 w-6 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20">
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     )
