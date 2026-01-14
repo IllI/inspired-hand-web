@@ -19,6 +19,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'logoText',
+      title: 'Logo Text',
+      type: 'string',
+      description: 'Optional branding text shown above subheading (for imageOverlay style)',
+    }),
+    defineField({
       name: 'style',
       title: 'Style',
       type: 'string',

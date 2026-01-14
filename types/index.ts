@@ -35,6 +35,7 @@ export interface HeroModule {
   _key: string
   heading?: string
   subheading?: string
+  logoText?: string
   backgroundImage?: SanityImage
   cta?: CTA
   style?: 'default' | 'speechBubble' | 'imageOverlay'

@@ -8,7 +8,7 @@ interface HeroProps {
 }
 
 export function Hero({ module }: HeroProps) {
-  const { heading, subheading, backgroundImage, cta, style = 'default' } = module
+  const { heading, subheading, logoText, backgroundImage, cta, style = 'default' } = module
 
   const backgroundUrl = backgroundImage?.asset
     ? urlForImage(backgroundImage)?.width(1000).url()
@@ -101,17 +101,19 @@ export function Hero({ module }: HeroProps) {
           <div className="mx-auto max-w-3xl text-center">
             {/* Semi-transparent overlay box */}
             <div className="bg-white/80 backdrop-blur-sm px-8 py-12 md:px-12 md:py-16">
-              {/* Logo/Brand name at top */}
-              <div className="mb-4">
-                <p className="font-serif text-2xl md:text-3xl text-ih-text-dark tracking-wide">
-                  Inspired Hand
-                </p>
-              </div>
+              {/* Logo/Brand name at top - configurable or defaults to Inspired Hand */}
+              {(logoText || 'Inspired Hand') && (
+                <div className="mb-4">
+                  <p className="font-serif text-2xl md:text-3xl text-ih-text-dark tracking-wide">
+                    {logoText || 'Inspired Hand'}
+                  </p>
+                </div>
+              )}
 
               {/* Subheading in italic serif */}
               {subheading && (
                 <p className="mb-6 font-serif italic text-lg md:text-xl text-ih-text-dark/80">
-                  Discover <span className="italic">Inspired Hand</span>
+                  {subheading}
                 </p>
               )}
 
@@ -126,8 +128,7 @@ export function Hero({ module }: HeroProps) {
               {cta?.label && cta?.link && (
                 <Link
                   href={cta.link}
-                  className="inline-block bg-[#F5D547] hover:bg-[#F0CC33] px-12 py-4 font-sans text-sm font-bold uppercase tracking-widest text-black transition-all shadow-md hover:shadow-lg"
-                >
+                  className="inline-block bg-[#F5D547] hover:bg-[#F0CC33] px-12 py-4 font-sans text-sm font-bold uppercase tracking-widest text-black transition-all shadow-md hover:shadow-lg">
                   {cta.label}
                 </Link>
               )}
@@ -137,8 +138,7 @@ export function Hero({ module }: HeroProps) {
             <div className="mt-8 flex justify-center">
               <a
                 href="#stories-grid"
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-black/70 hover:bg-black transition-colors"
-              >
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-black/70 hover:bg-black transition-colors">
                 <svg
                   className="h-6 w-6 text-white"
                   fill="currentColor"
