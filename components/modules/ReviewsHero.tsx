@@ -15,13 +15,19 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
         ? urlForImage(backgroundImage)?.width(1920).url()
         : null
 
+    // Debug logging
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+        console.log('ReviewsHero - backgroundImage:', backgroundImage)
+        console.log('ReviewsHero - backgroundUrl:', backgroundUrl)
+    }
+
     const displayText = isHovered && hoverText ? hoverText : (defaultText || 'WHAT ARE PEOPLE SAYING?')
 
     return (
         <section className="relative overflow-hidden">
             {/* Full-width background */}
             <div
-                className="relative h-[400px] md:h-[450px] flex items-center"
+                className="relative h-[400px] md:h-[450px] flex items-center bg-gray-800"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 role="region"
@@ -36,6 +42,7 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
                         className="object-cover"
                         sizes="100vw"
                         priority
+                        onError={(e) => console.error('Image failed to load:', e)}
                     />
                 )}
 
