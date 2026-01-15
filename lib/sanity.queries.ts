@@ -119,6 +119,15 @@ const moduleProjection = groq`
     quote,
     authorName,
     rating
+  },
+  _type == "reviewsHero" => {
+    defaultText,
+    hoverText,
+    sectionTitle,
+    backgroundImage {
+      ...,
+      asset
+    }
   }
 `
 
