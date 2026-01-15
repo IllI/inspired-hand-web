@@ -49,8 +49,8 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
                         <div className="relative">
                             {/* Hexagonal/Speech Bubble Background */}
                             <div className={`relative px-12 py-16 transition-all duration-500 ${isHovered
-                                    ? 'bg-white/90 backdrop-blur-sm'
-                                    : 'bg-gradient-to-br from-yellow-400/95 to-yellow-500/95'
+                                ? 'bg-white/90 backdrop-blur-sm'
+                                : 'bg-gradient-to-br from-yellow-400/95 to-yellow-500/95'
                                 }`}
                                 style={{
                                     clipPath: 'polygon(10% 0%, 90% 0%, 100% 10%, 100% 70%, 90% 100%, 30% 100%, 20% 85%, 0% 70%, 0% 10%)'
@@ -76,11 +76,19 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
                                     ) : (
                                         // Hover State
                                         <h2 className="font-sans text-2xl md:text-3xl text-black transition-opacity duration-500">
-                                            <span className="font-bold">{hoverText.split(' just like you')[0]}</span>
-                                            {hoverText.includes('just like you') && (
+                                            {hoverText && (
                                                 <>
-                                                    {' '}
-                                                    <span className="italic font-normal">just like you.</span>
+                                                    <span className="font-bold">
+                                                        {hoverText.includes(' just like you')
+                                                            ? hoverText.split(' just like you')[0]
+                                                            : hoverText}
+                                                    </span>
+                                                    {hoverText.includes(' just like you') && (
+                                                        <>
+                                                            {' '}
+                                                            <span className="italic font-normal">just like you.</span>
+                                                        </>
+                                                    )}
                                                 </>
                                             )}
                                         </h2>
