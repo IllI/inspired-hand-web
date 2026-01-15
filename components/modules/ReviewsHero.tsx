@@ -19,7 +19,7 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
 
     return (
         <section className="relative overflow-hidden">
-            {/* Full-width background with text overlay */}
+            {/* Full-width background */}
             <div
                 className="relative h-[400px] md:h-[450px] flex items-center"
                 onMouseEnter={() => setIsHovered(true)}
@@ -39,51 +39,53 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
                     />
                 )}
 
-                {/* Dark overlay for contrast */}
+                {/* Dark overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20" />
 
-                {/* Content Container - Left aligned */}
+                {/* Content - Left aligned */}
                 <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
                     <div className="max-w-xs md:max-w-sm">
-                        {/* Octagonal speech bubble */}
-                        <div className="relative">
-                            {/* Main octagon shape with exact Wix styling */}
-                            <div
-                                className="relative px-8 py-12 md:px-10 md:py-14"
-                                style={{
-                                    background: '#BDBF37',
-                                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)',
-                                    border: '8px solid #1a1a1a',
-                                    backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)',
-                                    backgroundSize: '20px 20px'
-                                }}
+                        {/* SVG-based speech bubble exactly from Wix */}
+                        <div className="relative" style={{ width: '280px', height: '240px' }}>
+                            {/* Background SVG shape with exact Wix path */}
+                            <svg
+                                viewBox="15 10 170 180"
+                                className="absolute inset-0 w-full h-full"
+                                preserveAspectRatio="xMidYMid meet"
                             >
-                                {/* Text content */}
-                                <div className="text-center">
-                                    <h3 className="font-sans text-xl md:text-2xl lg:text-3xl font-bold text-white uppercase leading-tight tracking-wide">
-                                        {displayText}
-                                    </h3>
-                                </div>
-                            </div>
+                                {/* Main shape - filled with gold and dots */}
+                                <defs>
+                                    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.3)" />
+                                    </pattern>
+                                </defs>
+                                <path
+                                    d="M140.847 10L15 22.189v116.923L83.472 190v-19.053L185 161.479V44.438L140.847 10zm39.431 147.101L78.75 166.568v14.083l-59.028-43.787V26.45L139.43 14.852l40.847 31.953v110.296z"
+                                    fill="#BDBF37"
+                                    stroke="#000010"
+                                    strokeWidth="8"
+                                />
+                                <rect x="15" y="10" width="170" height="180" fill="url(#dots)" />
+                                <path
+                                    d="M140.847 10L15 22.189v116.923L83.472 190v-19.053L185 161.479V44.438L140.847 10zm39.431 147.101L78.75 166.568v14.083l-59.028-43.787V26.45L139.43 14.852l40.847 31.953v110.296z"
+                                    fill="none"
+                                    stroke="#000010"
+                                    strokeWidth="8"
+                                />
+                            </svg>
 
-                            {/* Speech bubble tail - triangle pointing down */}
-                            <div className="absolute -bottom-10 left-10">
-                                <svg width="60" height="60" viewBox="0 0 60 60">
-                                    <polygon
-                                        points="10,0 60,0 10,50"
-                                        fill="#BDBF37"
-                                        stroke="#1a1a1a"
-                                        strokeWidth="8"
-                                        strokeLinejoin="miter"
-                                    />
-                                </svg>
+                            {/* Text overlay - centered in the shape */}
+                            <div className="absolute inset-0 flex items-center justify-center px-8">
+                                <h3 className="font-sans text-lg md:text-xl lg:text-2xl font-bold text-white uppercase text-center leading-tight tracking-wide">
+                                    {displayText}
+                                </h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Section Title Below */}
+            {/* Section Title */}
             {sectionTitle && (
                 <div className="bg-white py-12 md:py-16">
                     <div className="container mx-auto px-4">
