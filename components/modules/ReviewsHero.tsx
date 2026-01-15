@@ -15,7 +15,7 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
         ? urlForImage(backgroundImage)?.width(1920).url()
         : null
 
-    const displayText = isHovered && hoverText ? hoverText : (defaultText || 'What are people saying?')
+    const displayText = isHovered && hoverText ? hoverText : (defaultText || 'WHAT ARE PEOPLE SAYING?')
 
     return (
         <section className="relative overflow-hidden">
@@ -44,34 +44,37 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
 
                 {/* Content Container - Left aligned */}
                 <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
-                    <div className="max-w-sm">
-                        {/* Octagonal speech bubble with border */}
+                    <div className="max-w-xs md:max-w-sm">
+                        {/* Octagonal speech bubble */}
                         <div className="relative">
-                            {/* Main octagon shape */}
+                            {/* Main octagon shape with exact Wix styling */}
                             <div
-                                className="relative px-10 py-14 transition-colors duration-500"
+                                className="relative px-8 py-12 md:px-10 md:py-14"
                                 style={{
-                                    background: '#D4A933',
+                                    background: '#BDBF37',
                                     clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)',
-                                    border: '5px solid #1a1a1a'
+                                    border: '8px solid #1a1a1a',
+                                    backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)',
+                                    backgroundSize: '20px 20px'
                                 }}
                             >
-                                {/* Inner content */}
+                                {/* Text content */}
                                 <div className="text-center">
-                                    <h3 className="font-sans text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase leading-tight tracking-wide">
+                                    <h3 className="font-sans text-xl md:text-2xl lg:text-3xl font-bold text-white uppercase leading-tight tracking-wide">
                                         {displayText}
                                     </h3>
                                 </div>
                             </div>
 
-                            {/* Speech bubble tail - triangle pointing down-left */}
-                            <div className="absolute -bottom-8 left-12" style={{ zIndex: -1 }}>
-                                <svg width="50" height="50" viewBox="0 0 50 50">
+                            {/* Speech bubble tail - triangle pointing down */}
+                            <div className="absolute -bottom-10 left-10">
+                                <svg width="60" height="60" viewBox="0 0 60 60">
                                     <polygon
-                                        points="5,0 50,0 5,45"
-                                        fill="#D4A933"
+                                        points="10,0 60,0 10,50"
+                                        fill="#BDBF37"
                                         stroke="#1a1a1a"
-                                        strokeWidth="5"
+                                        strokeWidth="8"
+                                        strokeLinejoin="miter"
                                     />
                                 </svg>
                             </div>
