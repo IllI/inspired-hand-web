@@ -15,11 +15,13 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
         ? urlForImage(backgroundImage)?.width(1920).url()
         : null
 
+    const displayText = isHovered && hoverText ? hoverText : (defaultText || 'What are people saying?')
+
     return (
         <section className="relative overflow-hidden">
-            {/* Reviews Hero with Hover Effect - Full Width Background */}
+            {/* Full-width background with text overlay */}
             <div
-                className="relative h-[400px] md:h-[450px] flex items-center overflow-hidden"
+                className="relative h-[400px] md:h-[450px] flex items-center"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 role="region"
@@ -27,47 +29,50 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
             >
                 {/* Background Image */}
                 {backgroundUrl && (
-                    <>
-                        <Image
-                            src={backgroundUrl}
-                            alt={backgroundImage?.alt || 'Reviews background'}
-                            fill
-                            className="object-cover"
-                            sizes="100vw"
-                            priority
-                        />
-                        {/* Darker overlay for better contrast */}
-                        <div className="absolute inset-0 bg-black/30" />
-                    </>
+                    <Image
+                        src={backgroundUrl}
+                        alt={backgroundImage?.alt || 'Reviews background'}
+                        fill
+                        className="object-cover"
+                        sizes="100vw"
+                        priority
+                    />
                 )}
 
-                {/* Left-aligned hexagonal bubble container */}
-                <div className="relative z-10 container mx-auto px-4">
-                    <div className="max-w-xs">
-                        {/* Hexagonal Speech Bubble */}
+                {/* Dark overlay for contrast */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20" />
+
+                {/* Content Container - Left aligned */}
+                <div className="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
+                    <div className="max-w-sm">
+                        {/* Octagonal speech bubble with border */}
                         <div className="relative">
-                            {/* Main hexagon shape with border */}
+                            {/* Main octagon shape */}
                             <div
-                                className={`relative px-8 py-12 border-4 border-black transition-all duration-500 ${isHovered
-                                        ? 'bg-yellow-600/95'
-                                        : 'bg-yellow-500/95'
-                                    }`}
+                                className="relative px-10 py-14 transition-colors duration-500"
                                 style={{
-                                    clipPath: 'polygon(15% 0%, 85% 0%, 100% 25%, 100% 75%, 85% 100%, 15% 100%, 0% 75%, 0% 25%)'
+                                    background: '#D4A933',
+                                    clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)',
+                                    border: '5px solid #1a1a1a'
                                 }}
                             >
-                                {/* Text Content */}
+                                {/* Inner content */}
                                 <div className="text-center">
-                                    <h6 className="font-sans text-2xl md:text-3xl font-bold text-white uppercase leading-tight">
-                                        {isHovered && hoverText ? hoverText : (defaultText || 'What are people saying?')}
-                                    </h6>
+                                    <h3 className="font-sans text-2xl md:text-3xl lg:text-4xl font-bold text-white uppercase leading-tight tracking-wide">
+                                        {displayText}
+                                    </h3>
                                 </div>
                             </div>
 
-                            {/* Speech bubble tail */}
-                            <div className="absolute -bottom-6 left-8">
-                                <svg width="40" height="40" viewBox="0 0 40 40" className="text-yellow-500">
-                                    <polygon points="0,0 40,0 0,40" fill="currentColor" stroke="black" strokeWidth="4" />
+                            {/* Speech bubble tail - triangle pointing down-left */}
+                            <div className="absolute -bottom-8 left-12" style={{ zIndex: -1 }}>
+                                <svg width="50" height="50" viewBox="0 0 50 50">
+                                    <polygon
+                                        points="5,0 50,0 5,45"
+                                        fill="#D4A933"
+                                        stroke="#1a1a1a"
+                                        strokeWidth="5"
+                                    />
                                 </svg>
                             </div>
                         </div>
@@ -75,14 +80,14 @@ export function ReviewsHero({ module }: ReviewsHeroProps) {
                 </div>
             </div>
 
-            {/* Section Title Below Hero */}
+            {/* Section Title Below */}
             {sectionTitle && (
-                <div className="bg-white py-12">
+                <div className="bg-white py-12 md:py-16">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-center font-serif text-3xl md:text-4xl text-ih-text-dark italic">
+                        <h2 className="text-center font-serif text-3xl md:text-4xl lg:text-5xl text-ih-text-dark italic">
                             {sectionTitle}
                         </h2>
-                        <div className="mt-4 mx-auto w-24 h-1 bg-ih-primary" />
+                        <div className="mt-6 mx-auto w-32 h-1 bg-gray-300" />
                     </div>
                 </div>
             )}
