@@ -28,6 +28,44 @@ export function QuoteSection({ module }: QuoteSectionProps) {
     ? urlForImage(authorImage)?.width(200).height(200).url()
     : null
 
+  // Wix style (matches Success Stories page)
+  if (style === 'wix') {
+    return (
+      <section className="bg-white py-12">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:gap-8">
+            {/* Circular author image */}
+            {authorImageUrl && (
+              <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full md:h-28 md:w-28">
+                <Image
+                  src={authorImageUrl}
+                  alt={attribution || 'Author'}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
+
+            {/* Quote content */}
+            <div className="flex-1">
+              <blockquote className="mb-4 text-base leading-relaxed text-gray-800 md:text-lg">
+                "{quote}"
+              </blockquote>
+
+              {attribution && (
+                <cite className="block text-sm not-italic text-gray-500 md:text-base">
+                  <span className="italic">- {attribution}, </span>
+                  <span className="font-bold italic">Inspired Hand</span>
+                  <span className="italic"> reader</span>
+                </cite>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   // Simple style (Light Grey - Wix Match)
   if (style === 'simple') {
     return (

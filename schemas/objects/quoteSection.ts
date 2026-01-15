@@ -59,6 +59,7 @@ export default defineType({
           { title: 'Default', value: 'default' },
           { title: 'Large', value: 'large' },
           { title: 'With Background', value: 'background' },
+          { title: 'Wix Style (Success Stories)', value: 'wix' },
         ],
         layout: 'radio',
       },

@@ -116,7 +116,7 @@ export interface QuoteSectionModule {
   authorName?: string
   bookTitle?: string
   role?: string
-  style?: 'default' | 'large' | 'background' | 'simple'
+  style?: 'default' | 'large' | 'background' | 'simple' | 'wix'
   backgroundImage?: SanityImage
   authorImage?: SanityImage
 }
