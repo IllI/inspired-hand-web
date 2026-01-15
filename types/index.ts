@@ -169,6 +169,15 @@ export interface TestimonialSectionModule {
   rating?: number
 }
 
+export interface ReviewsHeroModule {
+  _type: 'reviewsHero'
+  _key: string
+  backgroundImage?: SanityImage
+  defaultText?: string
+  hoverText?: string
+  sectionTitle?: string
+}
+
 // Union type for all modules
 export type PageModule =
   | HeroModule
@@ -181,6 +190,7 @@ export type PageModule =
   | StoriesGridModule
   | CompositeFeatureSectionModule
   | TestimonialSectionModule
+  | ReviewsHeroModule
 
 // =============================================================================
 // Page Types

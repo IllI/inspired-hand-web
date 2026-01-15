@@ -6,6 +6,7 @@ export { QuoteSection } from './QuoteSection'
 export { RichTextSection } from './RichTextSection'
 export { Slideshow } from './Slideshow'
 export { TwoColumnSection } from './TwoColumnSection'
+export { ReviewsHero } from './ReviewsHero'
 
 // Module renderer
 export { default } from './ModuleRenderer'

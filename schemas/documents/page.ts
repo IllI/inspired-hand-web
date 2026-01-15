@@ -59,6 +59,7 @@ export default defineType({
         defineArrayMember({ type: 'storiesGrid' }),
         defineArrayMember({ type: 'compositeFeatureSection' }),
         defineArrayMember({ type: 'testimonialSection' }),
+        defineArrayMember({ type: 'reviewsHero' }),
       ],
     }),
   ],

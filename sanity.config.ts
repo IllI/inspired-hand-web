@@ -26,6 +26,7 @@ import quoteSection from 'schemas/objects/quoteSection'
 import storiesGrid from 'schemas/objects/storiesGrid'
 import compositeFeatureSection from 'schemas/objects/compositeFeatureSection'
 import testimonialSection from 'schemas/objects/testimonialSection'
+import reviewsHero from 'schemas/objects/reviewsHero'
 
 // Singleton schemas
 import settings from 'schemas/singletons/settings'
@@ -58,6 +59,7 @@ export default defineConfig({
       storiesGrid,
       compositeFeatureSection,
       testimonialSection,
+      reviewsHero,
     ],
   },
   plugins: [
