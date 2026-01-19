@@ -70,6 +70,7 @@ async function addProductAdToHomepage() {
 
             uploadedImages.push({
                 _type: 'image',
+                _key: `product-image-${i + 1}`,
                 asset: {
                     _type: 'reference',
                     _ref: asset._id
