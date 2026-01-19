@@ -234,6 +234,74 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
     )
   }
 
+  // Special "Our Story" Wix Style (dark background with specific typography)
+  const isOurStory = backgroundColor === '#335168' && textColor === 'white'
+
+  if (isOurStory && content && content.length >= 3) {
+    // Extract the three text blocks: label, quote, verse
+    const labelText = content[0]?.children?.[0]?.text || 'OUR STORY'
+    const quoteText = content[1]?.children?.[0]?.text || ''
+    const verseText = content[2]?.children?.[0]?.text || ''
+
+    return (
+      <section className="py-12 md:py-20" style={bgStyle}>
+        <div className="container mx-auto px-4 md:px-6">
+          <div className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
+            }`}>
+            {/* Image Column */}
+            <div className="relative aspect-[4/3] overflow-hidden shadow-sm">
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt={image?.alt || 'Our Story'}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-gray-700">
+                  <span className="text-gray-400 font-mono text-sm">No Image</span>
+                </div>
+              )}
+            </div>
+
+            {/* Content Column - Wix "Our Story" Style */}
+            <div className="flex flex-col justify-center text-center lg:text-left px-6 lg:px-12">
+              {/* "OUR STORY" Label */}
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/80 mb-6">
+                {labelText}
+              </p>
+
+              {/* Quote */}
+              <blockquote className="text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-tight mb-6">
+                {quoteText}
+              </blockquote>
+
+              {/* Bible Verse in Script Font */}
+              <p className="text-xl md:text-2xl text-white/90 mb-8" style={{
+                fontFamily: 'var(--font-script)',
+                fontStyle: 'italic'
+              }}>
+                {verseText}
+              </p>
+
+              {/* CTA Button */}
+              {cta?.label && cta?.link && (
+                <div className="mt-4">
+                  <Link
+                    href={cta.link}
+                    className="inline-block rounded-none bg-white px-8 py-3 text-sm font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:bg-gray-100 shadow-sm"
+                  >
+                    {cta.label}
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   // Default Contained Style
   return (
     <section className="py-12 md:py-20" style={bgStyle}>
@@ -282,8 +350,8 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
                 <Link
                   href={cta.link}
                   className={`inline-block rounded-none px-8 py-3 text-sm font-bold uppercase tracking-widest transition-colors shadow-sm ${textColor === 'white'
-                      ? 'bg-white text-ih-text-dark hover:bg-gray-100'
-                      : 'bg-ih-primary text-ih-text-dark hover:bg-ih-primary-light'
+                    ? 'bg-white text-ih-text-dark hover:bg-gray-100'
+                    : 'bg-ih-primary text-ih-text-dark hover:bg-ih-primary-light'
                     }`}
                 >
                   {cta.label}

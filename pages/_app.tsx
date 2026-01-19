@@ -2,7 +2,7 @@ import 'styles/index.css'
 
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 import { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Open_Sans, Playfair_Display } from 'next/font/google'
+import { IBM_Plex_Mono, Open_Sans, Playfair_Display, Tangerine } from 'next/font/google'
 import { lazy, useSyncExternalStore } from 'react'
 
 export interface SharedPageProps {
@@ -30,6 +30,12 @@ const serif = Playfair_Display({
   weight: ['400', '500', '600', '700', '800'],
 })
 
+const script = Tangerine({
+  variable: '--font-script',
+  subsets: ['latin'],
+  weight: ['400', '700'],
+})
+
 const subscribe = () => () => { }
 
 export default function App({
@@ -53,6 +59,7 @@ export default function App({
             --font-mono: ${mono.style.fontFamily};
             --font-sans: ${sans.style.fontFamily};
             --font-serif: ${serif.style.fontFamily};
+            --font-script: ${script.style.fontFamily};
             --color-primary: #b8860b;
             --color-primary-dark: #8b6914;
             --color-primary-light: #d4a574;
