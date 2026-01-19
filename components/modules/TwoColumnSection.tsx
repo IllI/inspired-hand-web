@@ -120,10 +120,10 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
     return (
       <section className="w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[500px] lg:min-h-[600px]">
+        <div className="flex flex-col lg:flex-row">
           {/* Image Column */}
           <div
-            className={`relative h-[400px] lg:h-auto lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'
+            className={`relative h-[350px] lg:h-[450px] lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'
               }`}
           >
             {imageUrl ? (
@@ -160,7 +160,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
           {/* Content Column */}
           <div
-            className={`flex flex-col justify-center px-8 py-20 lg:w-1/2 lg:py-32 lg:px-20 relative ${customBg ? '' : (isNeedPrayer ? 'bg-white' : bgClass)
+            className={`flex flex-col justify-center px-8 py-12 lg:w-1/2 lg:py-16 lg:px-16 relative ${customBg ? '' : (isNeedPrayer ? 'bg-white' : bgClass)
               } ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
             style={customBg ? { backgroundColor: customBg } : {}}
           >
@@ -175,23 +175,23 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
               </div>
             )}
 
-            <div className={`mx-auto max-w-md ${isBringsComfort || isOurStoryWix ? 'lg:mx-0 text-center lg:text-left' : 'text-center'}`}>
+            <div className={`mx-auto max-w-sm ${isBringsComfort || isOurStoryWix ? 'lg:mx-0 text-center lg:text-left' : 'text-center'}`}>
 
               {/* Special "Our Story" Wix rendering */}
               {isOurStoryWix && content && content.length >= 3 ? (
                 <>
                   {/* "OUR STORY" Label */}
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/90 mb-10 lg:mb-12">
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-white/90 mb-6">
                     {content[0]?.children?.[0]?.text || 'OUR STORY'}
                   </p>
 
                   {/* Quote */}
-                  <blockquote className="text-4xl md:text-5xl lg:text-6xl font-serif text-white leading-[1.2] mb-8 lg:mb-10">
+                  <blockquote className="text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-[1.15] mb-6">
                     {content[1]?.children?.[0]?.text || ''}
                   </blockquote>
 
                   {/* Bible Verse in Script Font */}
-                  <p className="text-3xl md:text-4xl text-white/90 mb-12 lg:mb-14" style={{
+                  <p className="text-2xl md:text-3xl text-white/90 mb-8" style={{
                     fontFamily: 'var(--font-script)',
                     fontStyle: 'italic'
                   }}>
@@ -215,7 +215,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
                   ) : (
                     <>
                       {heading && (
-                        <h2 className={`mb-8 text-4xl md:text-5xl lg:text-6xl font-bold ${textColorClass} font-heading leading-tight`}>
+                        <h2 className={`mb-6 text-3xl md:text-4xl lg:text-5xl font-bold ${textColorClass} font-heading leading-tight`}>
                           {heading}
                         </h2>
                       )}
@@ -223,7 +223,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
                   )}
 
                   {content && content.length > 0 && !isOurStoryWix && (
-                    <div className={`prose prose-lg max-w-none ${textColorClass} ${isBringsComfort ? 'hidden' : ''} mb-10`}>
+                    <div className={`prose prose-base max-w-none ${textColorClass} ${isBringsComfort ? 'hidden' : ''} mb-8`}>
                       <PortableText
                         value={content}
                         components={portableTextComponents}
@@ -238,10 +238,10 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
                   <Link
                     href={cta.link}
                     className={`inline-block rounded-none px-12 py-4 text-sm font-bold uppercase tracking-wider transition-colors shadow-sm ${isNeedPrayer
-                        ? 'bg-[#5DA1D4] text-white hover:bg-[#4a8bb8]' // Blue for prayer
-                        : textColor === 'white'
-                          ? 'bg-white text-ih-text-dark hover:bg-gray-100' // White for Our Story
-                          : 'bg-ih-text-dark text-white hover:bg-gray-900' // Default
+                      ? 'bg-[#5DA1D4] text-white hover:bg-[#4a8bb8]' // Blue for prayer
+                      : textColor === 'white'
+                        ? 'bg-white text-ih-text-dark hover:bg-gray-100' // White for Our Story
+                        : 'bg-ih-text-dark text-white hover:bg-gray-900' // Default
                       }`}
                   >
                     {cta.label}
