@@ -89,6 +89,21 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'style',
+      title: 'Style',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Transparent', value: 'transparent' },
+          { title: 'Primary (Full-width Split)', value: 'primary' },
+          { title: 'Accent', value: 'accent' },
+          { title: 'Secondary', value: 'secondary' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'transparent',
+    }),
+    defineField({
       name: 'backgroundColor',
       title: 'Background Color',
       type: 'string',
