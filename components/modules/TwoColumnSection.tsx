@@ -120,11 +120,14 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
     return (
       <section className="w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row" style={{ minHeight: 'auto', height: 'auto' }}>
           {/* Image Column */}
           <div
-            className={`relative h-[350px] lg:h-[450px] lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'
-              }`}
+            className={`relative lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}
+            style={{
+              height: '350px',
+              minHeight: '350px',
+            }}
           >
             {imageUrl ? (
               <Image
@@ -160,9 +163,12 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
           {/* Content Column */}
           <div
-            className={`flex flex-col justify-center px-8 py-12 lg:w-1/2 lg:py-16 lg:px-16 relative ${customBg ? '' : (isNeedPrayer ? 'bg-white' : bgClass)
-              } ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
-            style={customBg ? { backgroundColor: customBg } : {}}
+            className={`flex flex-col justify-center lg:w-1/2 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
+            style={{
+              backgroundColor: customBg || (isNeedPrayer ? '#ffffff' : undefined),
+              padding: '3rem 2rem',
+              minHeight: '350px',
+            }}
           >
             {/* Top Heart Icon (Specific to Brings Comfort) */}
             {isBringsComfort && (
