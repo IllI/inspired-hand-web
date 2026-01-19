@@ -128,6 +128,24 @@ const moduleProjection = groq`
       ...,
       asset
     }
+  },
+  _type == "productAd" => {
+    productTitle,
+    subtitle,
+    price,
+    rating,
+    reviewCount,
+    description,
+    images[] {
+      ...,
+      asset
+    },
+    video,
+    ctaText,
+    ctaLink,
+    layout,
+    backgroundColor,
+    socialHashtags
   }
 `
 
