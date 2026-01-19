@@ -47,7 +47,10 @@ const moduleProjection = groq`
       ...,
       asset
     },
-    cta
+    cta,
+    style,
+    backgroundColor,
+    textColor
   },
   _type == "formSection" => {
     heading,
