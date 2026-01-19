@@ -104,19 +104,24 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
   // Full-width Split Style
   if (style && style !== 'transparent') {
-    const bgClass =
-      style === 'primary'
+    // Determine background based on custom backgroundColor or default style
+    const customBg = backgroundColor
+    const bgClass = customBg
+      ? '' // We'll use inline style
+      : style === 'primary'
         ? 'bg-ih-primary'
         : style === 'accent'
           ? 'bg-ih-accent'
           : 'bg-gray-100'
 
     const isBringsComfort = heading?.includes('Brings comfort')
+    const isOurStoryWix = backgroundColor === '#335168'
+    const isNeedPrayer = heading?.includes('Need prayer')
 
     return (
       <section className="w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[600px] lg:h-[700px]">
-          {/* Image Column (Right for Brings Comfort) */}
+        <div className="flex flex-col lg:flex-row min-h-[500px] lg:h-[600px]">
+          {/* Image Column */}
           <div
             className={`relative h-[400px] lg:h-full lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'
               }`}
@@ -157,6 +162,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
           <div
             className={`flex flex-col justify-center px-8 py-16 lg:w-1/2 lg:p-24 lg:pr-32 relative ${bgClass} ${isImageLeft ? 'lg:order-2' : 'lg:order-1'
               }`}
+            style={customBg ? { backgroundColor: customBg } : {}}
           >
             {/* Top Heart Icon (Specific to Brings Comfort) */}
             {isBringsComfort && (
@@ -169,44 +175,74 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
               </div>
             )}
 
-            <div className={`mx-auto max-w-lg ${isBringsComfort ? 'lg:mx-0 lg:text-left text-center' : 'text-center'}`}>
+            <div className={`mx-auto max-w-lg ${isBringsComfort || isOurStoryWix ? 'lg:mx-0 lg:text-left text-center' : 'text-center'}`}>
 
-              {/* Special Layout for Brings Comfort: Subheading above Heading */}
-              {isBringsComfort ? (
+              {/* Special "Our Story" Wix rendering */}
+              {isOurStoryWix && content && content.length >= 3 ? (
                 <>
-                  <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-ih-text-dark/80">
-                    THE INSPIRED HAND MINISTRY
-                  </h3>
-                  {heading && (
-                    <h2 className="mb-6 font-heading text-4xl font-bold leading-tight text-ih-text-dark md:text-5xl lg:text-6xl">
-                      {heading}
-                    </h2>
-                  )}
+                  {/* "OUR STORY" Label */}
+                  <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/90 mb-8">
+                    {content[0]?.children?.[0]?.text || 'OUR STORY'}
+                  </p>
+
+                  {/* Quote */}
+                  <blockquote className="text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-tight mb-8">
+                    {content[1]?.children?.[0]?.text || ''}
+                  </blockquote>
+
+                  {/* Bible Verse in Script Font */}
+                  <p className="text-2xl md:text-3xl text-white/90 mb-10" style={{
+                    fontFamily: 'var(--font-script)',
+                    fontStyle: 'italic'
+                  }}>
+                    {content[2]?.children?.[0]?.text || ''}
+                  </p>
                 </>
               ) : (
                 <>
-                  {heading && (
-                    <h2 className="mb-6 text-3xl font-bold text-ih-text-dark font-heading md:text-4xl lg:text-5xl">
-                      {heading}
-                    </h2>
+                  {/* Special Layout for Brings Comfort: Subheading above Heading */}
+                  {isBringsComfort ? (
+                    <>
+                      <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-ih-text-dark/80">
+                        THE INSPIRED HAND MINISTRY
+                      </h3>
+                      {heading && (
+                        <h2 className="mb-6 font-heading text-4xl font-bold leading-tight text-ih-text-dark md:text-5xl lg:text-6xl">
+                          {heading}
+                        </h2>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {heading && (
+                        <h2 className={`mb-6 text-3xl font-bold ${textColorClass} font-heading md:text-4xl lg:text-5xl`}>
+                          {heading}
+                        </h2>
+                      )}
+                    </>
+                  )}
+
+                  {content && content.length > 0 && !isOurStoryWix && (
+                    <div className={`prose prose-lg max-w-none ${textColorClass} ${isBringsComfort ? 'hidden' : ''}`}>
+                      <PortableText
+                        value={content}
+                        components={portableTextComponents}
+                      />
+                    </div>
                   )}
                 </>
-              )}
-
-              {content && content.length > 0 && (
-                <div className={`prose prose-lg max-w-none text-ih-text-dark ${isBringsComfort ? 'hidden' : ''}`}>
-                  <PortableText
-                    value={content}
-                    components={portableTextComponents}
-                  />
-                </div>
               )}
 
               {cta?.label && cta?.link && (
                 <div className="mt-8">
                   <Link
                     href={cta.link}
-                    className="inline-block rounded-none bg-ih-text-dark px-10 py-4 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-900 shadow-sm"
+                    className={`inline-block rounded-none px-10 py-4 text-sm font-bold uppercase tracking-widest transition-colors shadow-sm ${isNeedPrayer
+                        ? 'bg-[#5DA1D4] text-white hover:bg-[#4a8bb8]' // Blue for prayer
+                        : textColor === 'white'
+                          ? 'bg-white text-ih-text-dark hover:bg-gray-100' // White for Our Story
+                          : 'bg-ih-text-dark text-white hover:bg-gray-900' // Default
+                      }`}
                   >
                     {cta.label}
                   </Link>
