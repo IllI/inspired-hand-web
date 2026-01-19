@@ -76,6 +76,8 @@ export interface TwoColumnSectionModule {
   style?: 'transparent' | 'primary' | 'accent' | 'secondary'
   image?: SanityImage
   cta?: CTA
+  backgroundColor?: string
+  textColor?: 'default' | 'white'
 }
 
 export interface FormField {

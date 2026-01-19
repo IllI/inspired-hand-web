@@ -88,6 +88,25 @@ export default defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'backgroundColor',
+      title: 'Background Color',
+      type: 'string',
+      description: 'Hex color for section background (e.g., #335168)',
+    }),
+    defineField({
+      name: 'textColor',
+      title: 'Text Color',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Default (Black)', value: 'default' },
+          { title: 'White', value: 'white' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'default',
+    }),
   ],
   preview: {
     select: {

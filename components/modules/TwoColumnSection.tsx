@@ -78,13 +78,29 @@ const portableTextComponents = {
 }
 
 export function TwoColumnSection({ module }: TwoColumnSectionProps) {
-  const { layout = 'image-right', heading, content, image, cta, style } = module
+  const {
+    layout = 'image-right',
+    heading,
+    content,
+    image,
+    cta,
+    style,
+    backgroundColor,
+    textColor = 'default'
+  } = module
 
   const imageUrl = image?.asset
     ? urlForImage(image)?.width(1200).height(1000).url()
     : null
 
   const isImageLeft = layout === 'image-left'
+
+  // Determine text color classes
+  const textColorClass = textColor === 'white' ? 'text-white' : 'text-ih-text-dark'
+  const headingColorClass = textColor === 'white' ? 'text-white' : 'text-ih-text-dark'
+
+  // Custom background color style
+  const bgStyle = backgroundColor ? { backgroundColor } : {}
 
   // Full-width Split Style
   if (style && style !== 'transparent') {
@@ -220,7 +236,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
   // Default Contained Style
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-12 md:py-20" style={bgStyle}>
       <div className="container mx-auto px-4 md:px-6">
         <div
           className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
@@ -247,13 +263,13 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
           {/* Content Column */}
           <div className="flex flex-col justify-center text-center lg:text-left">
             {heading && (
-              <h2 className="mb-6 text-3xl font-bold text-ih-text-dark font-heading md:text-4xl lg:text-5xl">
+              <h2 className={`mb-6 text-3xl font-bold ${headingColorClass} font-heading md:text-4xl lg:text-5xl`}>
                 {heading}
               </h2>
             )}
 
             {content && content.length > 0 && (
-              <div className="prose prose-lg max-w-none text-ih-text-dark">
+              <div className={`prose prose-lg max-w-none ${textColorClass}`}>
                 <PortableText
                   value={content}
                   components={portableTextComponents}
@@ -265,7 +281,10 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
               <div className="mt-8">
                 <Link
                   href={cta.link}
-                  className="inline-block rounded-none bg-ih-primary px-8 py-3 text-sm font-bold uppercase tracking-widest text-ih-text-dark transition-colors hover:bg-ih-primary-light shadow-sm"
+                  className={`inline-block rounded-none px-8 py-3 text-sm font-bold uppercase tracking-widest transition-colors shadow-sm ${textColor === 'white'
+                      ? 'bg-white text-ih-text-dark hover:bg-gray-100'
+                      : 'bg-ih-primary text-ih-text-dark hover:bg-ih-primary-light'
+                    }`}
                 >
                   {cta.label}
                 </Link>
