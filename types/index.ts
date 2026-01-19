@@ -178,6 +178,24 @@ export interface ReviewsHeroModule {
   sectionTitle?: string
 }
 
+export interface ProductAdModule {
+  _type: 'productAd'
+  _key: string
+  productTitle: string
+  subtitle?: string
+  price?: string
+  rating?: number
+  reviewCount?: number
+  description?: string
+  images: SanityImage[]
+  video?: string
+  ctaText?: string
+  ctaLink?: string
+  layout?: 'imageLeft' | 'imageRight' | 'centered'
+  backgroundColor?: 'white' | 'gray' | 'cream'
+  socialHashtags?: string[]
+}
+
 // Union type for all modules
 export type PageModule =
   | HeroModule
@@ -191,6 +209,7 @@ export type PageModule =
   | CompositeFeatureSectionModule
   | TestimonialSectionModule
   | ReviewsHeroModule
+  | ProductAdModule
 
 // =============================================================================
 // Page Types

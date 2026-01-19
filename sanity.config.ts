@@ -27,6 +27,7 @@ import storiesGrid from 'schemas/objects/storiesGrid'
 import compositeFeatureSection from 'schemas/objects/compositeFeatureSection'
 import testimonialSection from 'schemas/objects/testimonialSection'
 import reviewsHero from 'schemas/objects/reviewsHero'
+import productAd from 'schemas/objects/productAd'
 
 // Singleton schemas
 import settings from 'schemas/singletons/settings'
@@ -60,6 +61,7 @@ export default defineConfig({
       compositeFeatureSection,
       testimonialSection,
       reviewsHero,
+      productAd,
     ],
   },
   plugins: [

@@ -7,6 +7,7 @@ export { RichTextSection } from './RichTextSection'
 export { Slideshow } from './Slideshow'
 export { TwoColumnSection } from './TwoColumnSection'
 export { ReviewsHero } from './ReviewsHero'
+export { ProductAd } from './ProductAd'
 
 // Module renderer
 export { default } from './ModuleRenderer'

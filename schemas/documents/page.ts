@@ -60,6 +60,7 @@ export default defineType({
         defineArrayMember({ type: 'compositeFeatureSection' }),
         defineArrayMember({ type: 'testimonialSection' }),
         defineArrayMember({ type: 'reviewsHero' }),
+        defineArrayMember({ type: 'productAd' }),
       ],
     }),
   ],

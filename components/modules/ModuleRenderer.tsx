@@ -13,6 +13,7 @@ import { TwoColumnSection } from './TwoColumnSection'
 import { CompositeFeatureSection } from './CompositeFeatureSection'
 import { TestimonialSection } from './TestimonialSection'
 import { ReviewsHero } from './ReviewsHero'
+import { ProductAd } from './ProductAd'
 
 // Map of module types to their components
 const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {
@@ -27,6 +28,7 @@ const moduleComponents: Record<string, React.ComponentType<{ module: any }>> = {
   compositeFeatureSection: CompositeFeatureSection,
   testimonialSection: TestimonialSection,
   reviewsHero: ReviewsHero,
+  productAd: ProductAd,
 }
 
 interface ModuleRendererProps {
