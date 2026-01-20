@@ -122,7 +122,7 @@ export function RichTextSection({ module }: RichTextSectionProps) {
   }
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-0 md:py-0">
       <div className="mx-auto max-w-3xl px-6">
         {heading && (
           <h2
