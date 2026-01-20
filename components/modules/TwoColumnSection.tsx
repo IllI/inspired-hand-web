@@ -119,14 +119,24 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
     const isNeedPrayer = heading?.includes('Need prayer')
 
     return (
-      <section className="w-full overflow-hidden" style={{ margin: 0, padding: 0 }}>
-        <div className="flex flex-col lg:flex-row" style={{ minHeight: 'auto', height: 'auto', margin: 0 }}>
+      <section className="w-full" style={{ margin: 0, padding: 0 }}>
+        <div
+          className="flex flex-col lg:flex-row"
+          style={{
+            height: 'auto',
+            margin: 0,
+            padding: 0,
+            gap: 0,
+            columnGap: 0,
+            rowGap: 0,
+          }}
+        >
           {/* Image Column */}
           <div
             className={`relative lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}
             style={{
-              height: '400px',
-              minHeight: '400px',
+              height: '450px',
+              minHeight: '450px',
               margin: 0,
               padding: 0,
             }}
@@ -168,8 +178,8 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             className={`flex flex-col justify-center lg:w-1/2 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
             style={{
               backgroundColor: customBg || (isNeedPrayer ? '#ffffff' : undefined),
-              padding: '4rem 3rem',
-              minHeight: '400px',
+              padding: '5rem 4rem',
+              minHeight: '450px',
               margin: 0,
             }}
           >
