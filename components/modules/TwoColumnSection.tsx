@@ -134,8 +134,8 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             padding: 0,
             gap: 10,
             margin: '0px 0px 10px calc((100% - 980px) * 0.5)',
-            columnGap: 0,
-            rowGap: 0,
+            columnGap: 10,
+            rowGap: 10,
           }}
         >
           {/* Image Column */}
