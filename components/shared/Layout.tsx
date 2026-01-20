@@ -126,31 +126,6 @@ export function Layout({ children, settings }: LayoutProps) {
 
       {/* Footer */}
       <footer className="text-white">
-        {/* Newsletter Strip (Visual Match) */}
-        {!footer?.hideNewsletter && (
-          <div className="bg-ih-primary py-8 text-center text-ih-text-dark">
-            <div className="mx-auto max-w-4xl px-4">
-              <h3 className="text-2xl font-heading font-bold mb-2">
-                {footer?.newsletterHeading || 'Be Inspired'}
-              </h3>
-              <p className="font-sans mb-4">
-                {footer?.newsletterSubtext ||
-                  'Join our dedicated community and receive our weekly devotionals.'}
-              </p>
-              {/* Placeholder for form input */}
-              <div className="flex justify-center gap-2 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email here*"
-                  className="px-4 py-2 w-full border border-gray-300"
-                />
-                <button className="bg-ih-text-dark text-white px-6 py-2 uppercase font-bold text-xs tracking-widest">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Main Footer Content */}
         <div className="bg-ih-footer border-t border-ih-secondary">
