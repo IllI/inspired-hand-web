@@ -119,14 +119,16 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
     const isNeedPrayer = heading?.includes('Need prayer')
 
     return (
-      <section className="w-full overflow-hidden">
-        <div className="flex flex-col lg:flex-row" style={{ minHeight: 'auto', height: 'auto' }}>
+      <section className="w-full overflow-hidden" style={{ margin: 0, padding: 0 }}>
+        <div className="flex flex-col lg:flex-row" style={{ minHeight: 'auto', height: 'auto', margin: 0 }}>
           {/* Image Column */}
           <div
             className={`relative lg:w-1/2 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}
             style={{
-              height: '350px',
-              minHeight: '350px',
+              height: '400px',
+              minHeight: '400px',
+              margin: 0,
+              padding: 0,
             }}
           >
             {imageUrl ? (
@@ -147,7 +149,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             {/* Handshake Icon Overlay (Specific to Brings Comfort) */}
             {isBringsComfort && (
               <div className="absolute -bottom-16 -left-16 hidden lg:block z-10 w-48 h-48">
-                {/* This would be the handshake image if we had the asset, for now using the layout placeholder or the one from the script if provided via some other means. 
+                {/* This would be the handshake image if we had the asset, for now using the layout placeholder or the one from the script if provided via some other means.
                      Actually, better to hardcode the layout here. */}
                 <div className="relative w-full h-full">
                   <Image
@@ -166,8 +168,9 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             className={`flex flex-col justify-center lg:w-1/2 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
             style={{
               backgroundColor: customBg || (isNeedPrayer ? '#ffffff' : undefined),
-              padding: '3rem 2rem',
-              minHeight: '350px',
+              padding: '4rem 3rem',
+              minHeight: '400px',
+              margin: 0,
             }}
           >
             {/* Top Heart Icon (Specific to Brings Comfort) */}
