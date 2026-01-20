@@ -185,7 +185,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             className={`flex flex-col justify-center lg:w-1/2 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}
             style={{
               backgroundColor: customBg || (isNeedPrayer ? '#ffffff' : undefined),
-              padding: '5rem 4rem',
+              padding: '4rem 4rem',
               minHeight: '450px',
               margin: 0,
             }}
