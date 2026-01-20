@@ -132,7 +132,8 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
             height: 'auto',
             margin: 0,
             padding: 0,
-            gap: 0,
+            gap: 10,
+            margin: '0px 0px 10px calc((100% - 980px) * 0.5)',
             columnGap: 0,
             rowGap: 0,
           }}
