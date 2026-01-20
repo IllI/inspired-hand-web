@@ -359,7 +359,7 @@ export function TwoColumnSection({ module }: TwoColumnSectionProps) {
 
   // Default Contained Style
   return (
-    <section className="py-12 md:py-20" style={bgStyle}>
+    <section className="py-12 md:py-20 margin:100px" style={bgStyle}>
       <div className="container mx-auto px-4 md:px-6">
         <div
           className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-24 ${isImageLeft ? '' : 'lg:[&>*:first-child]:order-2'
